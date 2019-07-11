@@ -18,28 +18,28 @@ const dashboardRoutes: Routes = [
   },
   {
     path: 'sign-in',
-    component: SignInComponent,
-    canActivate: [SecureInnerPagesGuard]
+    component: SignInComponent
+    // canActivate: [SecureInnerPagesGuard]
   },
   {
     path: 'register-user',
-    component: SignUpComponent,
-    canActivate: [SecureInnerPagesGuard]
+    component: SignUpComponent
+    // canActivate: [SecureInnerPagesGuard]
   },
   {
     path: 'dashboard',
-    component: DashboardComponent,
-    canActivate: [AuthGuard]
+    component: DashboardComponent
+    // canActivate: [AuthGuard]
   },
   {
     path: 'forgot-password',
-    component: ForgotPasswordComponent,
-    canActivate: [SecureInnerPagesGuard]
+    component: ForgotPasswordComponent
+    // canActivate: [SecureInnerPagesGuard]
   },
   {
     path: 'verify-email-address',
-    component: VerifyEmailComponent,
-    canActivate: [SecureInnerPagesGuard]
+    component: VerifyEmailComponent
+    //  canActivate: [SecureInnerPagesGuard]
   }
 ];
 
