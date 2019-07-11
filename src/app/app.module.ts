@@ -29,6 +29,7 @@ import { environment } from 'src/environments/environment';
 // services
 import { AuthService } from './admin-side/shared/services/auth.service';
 import { ClientSignInComponent } from './client-side/authentification/client-sign-in/client-sign-in.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { ClientSignInComponent } from './client-side/authentification/client-sig
     AboutUsComponent,
     ContactComponent,
     NotFoundComponent,
-    ClientSignInComponent
+    ClientSignInComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,19 @@
 <app-header></app-header>
 <br />
-<div class="container" style="margin-top:160px;">
-  <p>
-    not-found works!
-  </p>
+<div class="container">
+  <div id="notfound">
+    <div class="notfound">
+      <div class="notfound-404">
+        <h1>404</h1>
+      </div>
+      <br />
+      <h2>Oops! Cette page n'a pas pu être trouvée</h2>
+      <p>
+        Désolé, mais la page que vous recherchez n'existe pas, a été supprimée,
+        son nom a été modifié ou est temporairement indisponible.
+      </p>
+      <a [routerLink]="['/']"> Aller à la page d'accueil</a>
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>
