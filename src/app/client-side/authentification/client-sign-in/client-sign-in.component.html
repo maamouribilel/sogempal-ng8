@@ -1,0 +1,264 @@
+<app-header></app-header>
+<br />
+<div class="container" style="margin-top:160px;">
+  <p id="breadcrumb">
+    <a [routerLink]="['/accueil']"><i class="fas fa-home"></i> Accueil</a>
+    Authentification
+  </p>
+
+  <!-- Sign In start-->
+  <h2 class="text-center text-uppercase">
+    Espace d'authentification
+  </h2>
+
+  <hr />
+  <div class="row">
+    <div class="col-md-5">
+      <form [formGroup]="signInForm" (ngSubmit)="onSignIn()">
+        <fieldset>
+          <p class="text-uppercase">Se connecter :</p>
+
+          <div
+            class="form-group"
+            [class.has-danger]="
+              !signInForm.get('userEmail').valid &&
+              signInForm.get('userEmail').touched
+            "
+            [class.has-success]="
+              signInForm.get('userEmail').valid &&
+              signInForm.get('userEmail').touched
+            "
+          >
+            <label class="col-form-label" for="sign-in-email">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                !signInForm.get('userEmail').valid &&
+                signInForm.get('userEmail').touched
+              "
+              [class.is-valid]="
+                signInForm.get('userEmail').valid &&
+                signInForm.get('userEmail').touched
+              "
+              placeholder="Veuillez saisir votre adresse de courrier électronique"
+              id="sign-in-email"
+              formControlName="userEmail"
+            />
+            <div class="invalid-feedback">
+              Sorry, error!
+            </div>
+          </div>
+          <div
+            class="form-group"
+            [class.has-danger]="
+              !signInForm.get('userPassword').valid &&
+              signInForm.get('userPassword').touched
+            "
+            [class.has-success]="
+              signInForm.get('userPassword').valid &&
+              signInForm.get('userPassword').touched
+            "
+          >
+            <label class="col-form-label" for="sign-in-password"
+              >Mot de passe</label
+            >
+            <input
+              type="text"
+              class="form-control input-fields"
+              [class.is-invalid]="
+                !signInForm.get('userPassword').valid &&
+                signInForm.get('userPassword').touched
+              "
+              [class.is-valid]="
+                signInForm.get('userPassword').valid &&
+                signInForm.get('userPassword').touched
+              "
+              placeholder="Veuillez saisir votre mot de passe"
+              id="sign-in-passwaord"
+              formControlName="userPassword"
+            />
+            <div class="invalid-feedback">
+              Sorry, error!
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              class="sign-in-btn btn btn-md"
+              [disabled]="!signInForm.valid"
+            >
+              Se connecter
+            </button>
+            <br /><br />
+          </div>
+        </fieldset>
+      </form>
+    </div>
+
+    <div class="col-md-2">
+      <!-------null------>
+    </div>
+
+    <div class="col-md-5">
+      <form [formGroup]="registerForm" (ngSubmit)="onSignUp()">
+        <fieldset>
+          <p class="text-uppercase">
+            Créer un compte :
+          </p>
+
+          <div
+            class="form-group"
+            [class.has-danger]="
+              !registerForm.get('signUpName').valid &&
+              registerForm.get('signUpName').touched
+            "
+            [class.has-success]="
+              registerForm.get('signUpName').valid &&
+              registerForm.get('signUpName').touched
+            "
+          >
+            <label class="col-form-label" for="sign-up-name">Nom Complet</label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                !registerForm.get('signUpName').valid &&
+                registerForm.get('signUpName').touched
+              "
+              [class.is-valid]="
+                registerForm.get('signUpName').valid &&
+                registerForm.get('signUpName').touched
+              "
+              placeholder="Veuillez saisir votre nom et prénom"
+              id="sign-up-name"
+              required
+              formControlName="signUpName"
+            />
+            <div class="invalid-feedback">
+              Sorry, error!
+            </div>
+          </div>
+
+          <div
+            class="form-group"
+            [class.has-danger]="
+              !registerForm.get('signUpEmail').valid &&
+              registerForm.get('signUpEmail').touched
+            "
+            [class.has-success]="
+              registerForm.get('signUpEmail').valid &&
+              registerForm.get('signUpEmail').touched
+            "
+          >
+            <label class="col-form-label" for="sign-up-email">Email</label>
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                !registerForm.get('signUpEmail').valid &&
+                registerForm.get('signUpEmail').touched
+              "
+              [class.is-valid]="
+                registerForm.get('signUpEmail').valid &&
+                registerForm.get('signUpEmail').touched
+              "
+              placeholder="Veuillez saisir votre adresse de courrier électronique"
+              id="sign-up-email"
+              required
+              formControlName="signUpEmail"
+            />
+            <div class="invalid-feedback">
+              Sorry, error!
+            </div>
+          </div>
+
+          <div
+            class="form-group"
+            [class.has-danger]="
+              !registerForm.get('signUpPassword').valid &&
+              registerForm.get('signUpPassword').touched
+            "
+            [class.has-success]="
+              registerForm.get('signUpPassword').valid &&
+              registerForm.get('signUpPassword').touched
+            "
+          >
+            <label class="col-form-label" for="sign-up-password"
+              >Mot de passe</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                !registerForm.get('signUpPassword').valid &&
+                registerForm.get('signUpPassword').touched
+              "
+              [class.is-valid]="
+                registerForm.get('signUpPassword').valid &&
+                registerForm.get('signUpPassword').touched
+              "
+              placeholder="Veuillez saisir votre mot de passe"
+              id="sign-up-password"
+              required
+              formControlName="signUpPassword"
+            />
+            <div class="invalid-feedback">
+              Sorry, error!
+            </div>
+          </div>
+
+          <div
+            class="form-group"
+            [class.has-danger]="
+              !registerForm.get('signUpTel').valid &&
+              registerForm.get('signUpTel').touched
+            "
+            [class.has-success]="
+              registerForm.get('signUpTel').valid &&
+              registerForm.get('signUpTel').touched
+            "
+          >
+            <label class="col-form-label" for="sign-up-tel"
+              >Numéro de téléphone</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              [class.is-invalid]="
+                !registerForm.get('signUpTel').valid &&
+                registerForm.get('signUpTel').touched
+              "
+              [class.is-valid]="
+                registerForm.get('signUpTel').valid &&
+                registerForm.get('signUpTel').touched
+              "
+              id="sign-up-tel"
+              placeholder="Veuillez saisir le numéro de votre telephone"
+              required
+              formControlName="signUpTel"
+            />
+            <div class="invalid-feedback">
+              Sorry, error!
+            </div>
+          </div>
+
+          <div>
+            <button
+              type="submit"
+              class="btn btn-md sign-in-btn"
+              [disabled]="!registerForm.valid"
+            >
+              S'inscrire
+            </button>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Sign In end-->
+<br /><br />
+<app-footer></app-footer>

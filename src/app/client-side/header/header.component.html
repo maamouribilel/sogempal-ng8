@@ -1,0 +1,259 @@
+<section class="fixed-top" style="background-color: white;">
+  <div class="container-fluid">
+    <div class=" row justify-content-md-center align-items-center">
+      <div class="col-lg-4 col-md-5 col-xs-12">
+        <img src="../assets/img/logo-sogempal-final.png" alt="SOGEMPAL" />
+      </div>
+      <div class="col-lg-3 d-none d-lg-block" style="text-align: left;">
+        <div class="ml-auto d-none d-md-block d-md-flex">
+          <div class="media header-top-info">
+            <span class="header-top-info__icon"
+              ><i class="fal fa-envelope"></i>
+            </span>
+            <div class="media-body">
+              <p>Vous avez une question?</p>
+              <p>
+                Mail: <a href="mailto:contact@sogempal.tn">info@sogempal.tn</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 d-none d-lg-block" style="text-align: left;">
+        <div class="ml-auto d-none d-md-block d-md-flex">
+          <div class="media header-top-info">
+            <span class="header-top-info__icon"
+              ><i class="fal fa-phone"></i
+            ></span>
+            <div class="media-body">
+              <p>Vous avez une question?</p>
+              <p>Tel: <a href="tel:+216 71 216 475">+216 71216475</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="col-lg-2 col-md-6  d-none d-sm-block"
+        style="text-align: right;"
+      >
+        <!-- login btn -->
+        <ul class="nav nav-tabs">
+          <li class="nav-item dropdown">
+            <button
+              class="nav-link dropdown-toggle"
+              data-toggle="dropdown"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <img
+                src="../../../assets/img/svg-icons/user-brown.svg"
+                alt="Votre compte"
+                style="width:1.2em ; height: 1.2em; "
+              />
+              Votre compte
+            </button>
+            <!--Logged-->
+            <div
+              *ngIf="afAuth.user | async as user; else showLogin"
+              class="dropdown-menu"
+              x-placement="bottom-start"
+            >
+              <a class="dropdown-item" routerLink="/login"
+                ><img
+                  src="../../../assets/img/svg-icons/login-brown.svg"
+                  alt="se connecter"
+                  style="width:1.2em ; height: 1.2em; "
+                />
+                mon compte</a
+              >
+              <a class="dropdown-item" routerLink="/login">
+                <img
+                  src="../../../assets/img/svg-icons/login-brown.svg"
+                  alt="s'inscrire"
+                  style="width:1.2em ; height: 1.2em; "
+                />
+                mes commandes</a
+              >
+              <div class="dropdown-divider"></div>
+              <button type="button" class="dropdown-item" (click)="onLogout()">
+                <img
+                  src="../../../assets/img/svg-icons/logout-brown.svg"
+                  alt="Déconnexion"
+                  style="width:1.2em ; height: 1.2em; "
+                />
+                Déconnexion
+              </button>
+            </div>
+            <!--Not Logged-->
+            <ng-template #showLogin>
+              <div class="dropdown-menu" x-placement="bottom-start">
+                <a class="dropdown-item" routerLink="/login"
+                  ><img
+                    src="../../../assets/img/svg-icons/login-brown.svg"
+                    alt="se connecter"
+                    style="width:1.2em ; height: 1.2em; "
+                  />
+                  Se connecter</a
+                >
+                <a class="dropdown-item" routerLink="/login">
+                  <img
+                    src="../../../assets/img/svg-icons/login-brown.svg"
+                    alt="s'inscrire"
+                    style="width:1.2em ; height: 1.2em; "
+                  />
+                  S'inscrire</a
+                >
+              </div>
+            </ng-template>
+          </li>
+        </ul>
+        <!-- login btn -->
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <div class="">
+      <nav class="navbar navbar-expand-sm navbar-custom ">
+        <span
+          class="navbar-text	d-block d-sm-none cart"
+          style="color: blanchedalmond;"
+          ><a class="cart-link" [routerLink]="['/panier']"
+            ><img
+              src="../../../assets/img/svg-icons/forklift-white.svg"
+              alt="Panier"
+              style="width: 1.5em;height: 1.5em;"
+            />
+            <span class="badge badge-pill badge-light"> 1</span></a
+          ></span
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarCustom"
+        >
+          <i class="fa fa-bars fa-lg py-1 text-white"></i>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarCustom">
+          <ul class="navbar-nav">
+            <li class="nav-item ">
+              <a
+                class="nav-link"
+                [routerLink]="['/accueil']"
+                routerLinkActive="active"
+              >
+                <img
+                  src="../assets/img/svg-icons/home-white.svg"
+                  style="width: 1.4em; height: 1.4em;"
+                  alt="accueil"
+                />
+                &nbsp; ACCUEIL</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                class="nav-link"
+                [routerLink]="['/palletes']"
+                routerLinkActive="active"
+                ><img
+                  src="../assets/img/svg-icons/pallet-white.svg"
+                  style="width: 1.6em; height: 1.6em;"
+                  alt="palette"
+                />
+                &nbsp;PALETTES</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                class="nav-link"
+                [routerLink]="['/caisses']"
+                routerLinkActive="active"
+              >
+                <img
+                  src="../assets/img/svg-icons/box-white.svg"
+                  style="width: 1.4em; height: 1.4em;"
+                  alt="caisse"
+                />&nbsp; CAISSES</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link"
+                class="nav-link"
+                [routerLink]="['/contact']"
+                routerLinkActive="active"
+              >
+                <img
+                  src="../assets/img/svg-icons/contact-white.svg"
+                  style="width: 1.4em; height: 1.4em;"
+                  alt="caisse"
+                />&nbsp; CONTACT</a
+              >
+            </li>
+            <!--Logged-->
+            <ng-container *ngIf="afAuth.user | async as user; else showLogin2">
+              <li class="nav-item 	d-block d-sm-none">
+                <a class="nav-link" routerLink="/login"
+                  ><img
+                    src="../assets/img/svg-icons/login-white.svg"
+                    style="width: 1.4em; height: 1.4em;"
+                    alt="caisse"
+                  />&nbsp; Mon compte</a
+                >
+              </li>
+              <li class="nav-item 	d-block d-sm-none">
+                <a class="nav-link" routerLink="/login"
+                  ><img
+                    src="../assets/img/svg-icons/login-white.svg"
+                    style="width: 1.4em; height: 1.4em;"
+                    alt="caisse"
+                  />&nbsp; Mes commandes</a
+                >
+              </li>
+              <li class="nav-item 	d-block d-sm-none">
+                <a class="nav-link" (click)="onLogout()"
+                  ><img
+                    src="../assets/img/svg-icons/logout-white.svg"
+                    style="width: 1.4em; height: 1.4em;"
+                    alt="caisse"
+                  />&nbsp; Déconnexion</a
+                >
+              </li>
+            </ng-container>
+            <!--Not Logged-->
+            <ng-template #showLogin2>
+              <li class="nav-item 	d-block d-sm-none">
+                <a class="nav-link" routerLink="/login"
+                  ><img
+                    src="../assets/img/svg-icons/login-white.svg"
+                    style="width: 1.4em; height: 1.4em;"
+                    alt="caisse"
+                  />&nbsp; Se connecter</a
+                >
+              </li>
+            </ng-template>
+          </ul>
+
+          <span
+            class="navbar-text ml-auto d-none d-sm-block cart"
+            style="color: blanchedalmond;"
+            ><a class="cart-link" [routerLink]="['/panier']"
+              ><img
+                src="../../../assets/img/svg-icons/forklift-white.svg"
+                alt="Panier"
+                style="width: 1.5em;height: 1.5em;"
+              />
+              <span class="badge badge-pill badge-light"> 1</span></a
+            ></span
+          >
+        </div>
+      </nav>
+    </div>
+
+    <!-- NAVBAR END -->
+  </header>
+</section>
