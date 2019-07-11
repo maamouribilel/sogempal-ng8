@@ -6,6 +6,9 @@ import { HomeComponent } from '../client-side/home/home.component';
 import { ContactComponent } from '../client-side/contact/contact.component';
 import { ClientSignInComponent } from '../client-side/authentification/client-sign-in/client-sign-in.component';
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
+import { PalettesComponent } from '../client-side/palettes/palettes.component';
+import { CaissesComponent } from '../client-side/caisses/caisses.component';
+import { PanierComponent } from '../client-side/panier/panier.component';
 
 // admin
 /*
@@ -24,6 +27,9 @@ const routes: Routes = [
   { path: 'accueil', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: ClientSignInComponent },
+  { path: 'palettes', component: PalettesComponent },
+  { path: 'caisses', component: CaissesComponent },
+  { path: 'panier', component: PanierComponent },
   { path: 'not-found', component: NotFoundComponent },
 
   /*

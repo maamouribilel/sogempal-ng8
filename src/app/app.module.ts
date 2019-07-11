@@ -16,6 +16,9 @@ import { HomeComponent } from './client-side/home/home.component';
 import { AboutUsComponent } from './client-side/about-us/about-us.component';
 import { ContactComponent } from './client-side/contact/contact.component';
 import { NotFoundComponent } from './shared/components/not-found/not-found.component';
+import { ClientSignInComponent } from './client-side/authentification/client-sign-in/client-sign-in.component';
+import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { PanierComponent } from './client-side/panier/panier.component';
 
 // Firebase modules
 import { AngularFireModule } from '@angular/fire';
@@ -28,8 +31,10 @@ import { environment } from 'src/environments/environment';
 
 // services
 import { AuthService } from './admin-side/shared/services/auth.service';
-import { ClientSignInComponent } from './client-side/authentification/client-sign-in/client-sign-in.component';
-import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { DataService } from './client-side/services/data.service';
+import { PalettesComponent } from './client-side/palettes/palettes.component';
+import { CaissesComponent } from './client-side/caisses/caisses.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,12 +46,16 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
     ContactComponent,
     NotFoundComponent,
     ClientSignInComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    PanierComponent,
+    PalettesComponent,
+    CaissesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
@@ -58,7 +67,7 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

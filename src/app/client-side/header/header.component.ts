@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { ClientAuthService } from '../services/client-auth.service';
 
@@ -7,13 +7,20 @@ import { ClientAuthService } from '../services/client-auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, DoCheck {
+  slProducts: any[] = [];
   constructor(
     public afAuth: AngularFireAuth,
     private clientAuthService: ClientAuthService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.slProducts = JSON.parse(localStorage.getItem('slProducts')) || [];
+  }
+
+  ngDoCheck() {
+    this.slProducts = JSON.parse(localStorage.getItem('slProducts')) || [];
+  }
 
   onLogout() {
     this.clientAuthService.logout();
