@@ -8,7 +8,7 @@
         <div class="ml-auto d-none d-md-block d-md-flex">
           <div class="media header-top-info">
             <span class="header-top-info__icon"
-              ><i class="fal fa-envelope"></i>
+              ><i class="fas fa-envelope"></i>
             </span>
             <div class="media-body">
               <p>Vous avez une question?</p>
@@ -23,7 +23,7 @@
         <div class="ml-auto d-none d-md-block d-md-flex">
           <div class="media header-top-info">
             <span class="header-top-info__icon"
-              ><i class="fal fa-phone"></i
+              ><i class="fas fa-phone"></i
             ></span>
             <div class="media-body">
               <p>Vous avez une question?</p>
@@ -40,11 +40,14 @@
         <ul class="nav nav-tabs">
           <li class="nav-item dropdown">
             <button
-              class="nav-link dropdown-toggle"
+              class="dropdown-toggle"
               data-toggle="dropdown"
               type="button"
               aria-haspopup="true"
               aria-expanded="false"
+              style="border: none;
+              background-color: #fff;
+              "
             >
               <img
                 src="../../../assets/img/svg-icons/user-brown.svg"
@@ -59,21 +62,13 @@
               class="dropdown-menu"
               x-placement="bottom-start"
             >
-              <a class="dropdown-item" routerLink="/login"
-                ><img
-                  src="../../../assets/img/svg-icons/login-brown.svg"
-                  alt="se connecter"
-                  style="width:1.2em ; height: 1.2em; "
-                />
-                mon compte</a
+              <a class="dropdown-item" routerLink="/login">
+                <i style="color: #C08E58;" class="fas fa-user"> </i>&nbsp; mon
+                compte</a
               >
               <a class="dropdown-item" routerLink="/login">
-                <img
-                  src="../../../assets/img/svg-icons/login-brown.svg"
-                  alt="s'inscrire"
-                  style="width:1.2em ; height: 1.2em; "
-                />
-                mes commandes</a
+                <i style="color: #C08E58;" class="fas fa-clipboard-list"> </i
+                >&nbsp; mes commandes</a
               >
               <div class="dropdown-divider"></div>
               <button type="button" class="dropdown-item" (click)="onLogout()">
@@ -136,7 +131,7 @@
           data-toggle="collapse"
           data-target="#navbarCustom"
         >
-          <i class="fa fa-bars fa-lg py-1 text-white"></i>
+          <i class="fas fa-bars fa-lg py-1 text-white"></i>
         </button>
         <div class="navbar-collapse collapse" id="navbarCustom">
           <ul class="navbar-nav">
@@ -210,24 +205,20 @@
                 />&nbsp; CONTACT</a
               >
             </li>
+            <div
+              class="d-block d-sm-none"
+              style="margin:5px;border:1px white solid;"
+            ></div>
             <!--Logged-->
             <ng-container *ngIf="afAuth.user | async as user; else showLogin2">
               <li class="nav-item 	d-block d-sm-none">
                 <a class="nav-link" routerLink="/login"
-                  ><img
-                    src="../assets/img/svg-icons/login-white.svg"
-                    style="width: 1.4em; height: 1.4em;"
-                    alt="caisse"
-                  />&nbsp; Mon compte</a
+                  ><i class="fas fa-user"></i>&nbsp; Mon compte</a
                 >
               </li>
               <li class="nav-item 	d-block d-sm-none">
                 <a class="nav-link" routerLink="/login"
-                  ><img
-                    src="../assets/img/svg-icons/login-white.svg"
-                    style="width: 1.4em; height: 1.4em;"
-                    alt="caisse"
-                  />&nbsp; Mes commandes</a
+                  ><i class="fas fa-clipboard-list"></i>&nbsp; Mes commandes</a
                 >
               </li>
               <li class="nav-item 	d-block d-sm-none">

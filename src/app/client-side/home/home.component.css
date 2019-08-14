@@ -1,0 +1,22 @@
+.banner {
+  background-image: url('../../../assets/img/home-banner.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 450px;
+  display: flex;
+  /* align-items: ; */
+}
+
+.banner-btn {
+  background-color: #127441;
+  color: #fff;
+  width: 125px;
+  height: 50px;
+  font-size: 18px;
+  margin-top: 20px;
+}
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
+}

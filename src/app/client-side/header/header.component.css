@@ -61,6 +61,23 @@
 .cart-link {
   text-decoration: none;
   color: #f0f0f0;
+  padding: 25px;
+}
+.cart-link:hover {
+  background-color: rgb(1, 68, 34);
+}
+
+.nav-link {
+  padding: 27px;
+}
+
+.nav-link:hover {
+  background-color: rgb(1, 68, 34);
+  color: #fff;
+}
+.active {
+  background-color: rgb(1, 68, 34);
+  color: #fff;
 }
 
 /* Mobile */
@@ -70,6 +87,13 @@
   }
   nav.navbar ul li a {
     color: aliceblue;
-    width: 150px;
+    width: 170px;
+  }
+  .nav-link {
+    padding: 10px;
+  }
+  .active {
+    background-color: rgb(1, 68, 34);
+    color: #fff;
   }
 }

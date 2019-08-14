@@ -1,18 +1,51 @@
 <app-header></app-header>
-<br />
-<ngb-carousel *ngIf="images">
-  <ng-template ngbSlide *ngFor="let image of images">
-    <img [src]="image" alt="Random slide" />
-    <div class="carousel-caption">
-      <h3>No mouse navigation</h3>
-      <p>This carousel hides navigation arrows and indicators.</p>
-    </div>
-  </ng-template>
-</ngb-carousel>
 
-<hr />
-<div class="container" style="margin-top:160px;">
-  <br />
+<div style="margin-top:160px;">
+  <!-- Banner Begin-->
+  <div id="carouselContent" class="carousel slide banner" data-ride="carousel">
+    <div class="carousel-inner" role="listbox">
+      <div
+        class="carousel-item active text-center p-4"
+        style="margin-top: 125px;"
+      >
+        <h1 style="color: white!important; font-size: 40px;">
+          UNE SÉLECTION DE PALETTES DANS LES DIMENSIONS LES PLUS COURANTES !
+        </h1>
+        <button class="btn btn-default banner-btn">
+          lets go <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+      <div class="carousel-item text-center p-4" style="margin-top: 125px; ">
+        <h1 style="color: white!important; font-size: 40px;">
+          POUR TRANSPORTER DES OBJETS FRAGILES, LA CAISSE EN BOIS EST L’UNE DES
+          MEILLEURES SOLUTIONS !
+        </h1>
+        <button class="btn btn-default banner-btn">
+          lets go <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+    <a
+      class="carousel-control-prev"
+      href="#carouselContent"
+      role="button"
+      data-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a
+      class="carousel-control-next"
+      href="#carouselContent"
+      role="button"
+      data-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <!-- Banner End-->
+
   <h1>Some text to enable scrolling</h1>
   <h1>Some text to enable scrolling</h1>
   <h1>Some text to enable scrolling</h1>
