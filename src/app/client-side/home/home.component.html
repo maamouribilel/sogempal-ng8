@@ -8,20 +8,20 @@
         class="carousel-item active text-center p-4"
         style="margin-top: 125px;"
       >
-        <h1 style="color: white!important; font-size: 40px;">
+        <h1 id="banner-title" style="color: white!important; font-size: 40px;">
           UNE SÉLECTION DE PALETTES DANS LES DIMENSIONS LES PLUS COURANTES !
         </h1>
-        <button class="btn btn-default banner-btn">
-          lets go <i class="fas fa-arrow-right"></i>
+        <button class="btn btn-default banner-btn" [routerLink]="['/palettes']">
+          Découvrir &nbsp; <i class="fas fa-arrow-right"></i>
         </button>
       </div>
       <div class="carousel-item text-center p-4" style="margin-top: 125px; ">
-        <h1 style="color: white!important; font-size: 40px;">
+        <h1 id="banner-title" style="color: white!important; font-size: 40px;">
           POUR TRANSPORTER DES OBJETS FRAGILES, LA CAISSE EN BOIS EST L’UNE DES
           MEILLEURES SOLUTIONS !
         </h1>
-        <button class="btn btn-default banner-btn">
-          lets go <i class="fas fa-arrow-right"></i>
+        <button class="btn btn-default banner-btn" [routerLink]="['/caisses']">
+          Découvrir &nbsp; <i class="fas fa-arrow-right"></i>
         </button>
       </div>
     </div>
@@ -45,17 +45,78 @@
     </a>
   </div>
   <!-- Banner End-->
-
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
-  <h1>Some text to enable scrolling</h1>
+  <br />
+  <!--Steps Begin-->
+  <section>
+    <div>
+      <div class="container-fluid">
+        <h2 class="section-title mb-2 h1">
+          VOTRE PALETTE OU CAISSE EN BOIS
+        </h2>
+        <p class="text-center text-muted h4">
+          EN 4 ÉTAPES
+        </p>
+        <div class="row mt-60">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+            <div class="serv-section-2">
+              <div class="serv-section-2-icon">
+                <i class="fas fa-ruler"></i>
+              </div>
+              <div class="serv-section-desc">
+                <h4>Personnalisez</h4>
+                <h5>
+                  1. Personnalisez votre caisse ou palette bois en quelques
+                  clics
+                </h5>
+              </div>
+              <div class="section-heading-line-left"></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="serv-section-2 serv-section-2-act">
+              <div class="serv-section-2-icon serv-section-2-icon-act">
+                <i class="fas fa-lock"></i>
+              </div>
+              <div class="serv-section-desc">
+                <h4>Cammander</h4>
+                <h5>2. Validez votre commande en ligne en toute sécurité</h5>
+              </div>
+              <div class="section-heading-line-left"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-60">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+            <div class="serv-section-2">
+              <div class="serv-section-2-icon">
+                <i class="fas fa-stopwatch"></i>
+              </div>
+              <div class="serv-section-desc">
+                <h4>Préparation</h4>
+                <h5>
+                  3. Fabrication express de votre produit sur-mesure sous 48h
+                </h5>
+              </div>
+              <div class="section-heading-line-left"></div>
+            </div>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="serv-section-2 serv-section-2-act">
+              <div class="serv-section-2-icon serv-section-2-icon-act">
+                <i class="fas fa-shipping-fast"></i>
+              </div>
+              <div class="serv-section-desc">
+                <h4>Livraison</h4>
+                <h5>4. Livré chez vous sous 3 à 4 j.</h5>
+              </div>
+              <div class="section-heading-line-left"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--Steps End-->
+  <br />
 </div>
 <app-footer></app-footer>
