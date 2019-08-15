@@ -35,6 +35,9 @@ import { DataService } from './client-side/services/data.service';
 import { PalettesComponent } from './client-side/palettes/palettes.component';
 import { CaissesComponent } from './client-side/caisses/caisses.component';
 import { HttpClientModule } from '@angular/common/http';
+import { OrderComponent } from './client-side/order/order.component';
+import { Order2Component } from './client-side/order2/order2.component';
+import { Order3Component } from './client-side/order3/order3.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +52,10 @@ import { HttpClientModule } from '@angular/common/http';
     SpinnerComponent,
     PanierComponent,
     PalettesComponent,
-    CaissesComponent
+    CaissesComponent,
+    OrderComponent,
+    Order2Component,
+    Order3Component
   ],
   imports: [
     BrowserModule,

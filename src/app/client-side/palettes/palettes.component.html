@@ -8,29 +8,6 @@
   <app-spinner *ngIf="showSpinner; else loadedContent"></app-spinner>
   <ng-template #loadedContent>
     <div class="row">
-      <!--
-      <div
-        *ngFor="let prod of products; let i = index"
-        class=" col-md-4 col-sm-6 col-xs-12 card"
-        style="width: 18rem;"
-      >
-        <div class="card-body">
-          <h5 class="card-title">{{ prod.name }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">
-            {{ prod.price | currency }}
-          </h6>
-          <p class="card-text">{{ prod.description }}</p>
-          <a
-            (click)="onAddToSl(prod)"
-            class="card-link btn btn-primary"
-            style="cursor:pointer;"
-            >Add Product</a
-          >
-        </div>
-      </div>
-    </div>
-    -->
-
       <div
         class="col-sm-6 col-md-4 col-lg-4"
         *ngFor="let prod of products; let i = index"
@@ -95,4 +72,5 @@
     </div>
   </ng-template>
 </div>
+<br /><br />
 <app-footer></app-footer>

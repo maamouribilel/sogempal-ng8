@@ -1,0 +1,43 @@
+.alert-panier {
+  background-color: #cce5ff;
+  color: #004085;
+}
+.btn-checkout {
+  background-color: #05582d;
+  color: #fff;
+}
+.btn-retour {
+  background-color: #a77847;
+  color: #fff;
+}
+.min-height {
+  height: 300px;
+}
+.btn-checkout-box {
+  padding-left: 70%;
+}
+input[type='number']:focus:not([readonly]) + label {
+  color: #c08e58;
+}
+
+input[type='number']:focus:not([readonly]) {
+  border-bottom: 1px solid #c08e58;
+  box-shadow: 0 1px 0 0 #c08e58;
+}
+
+.img-produit-panier {
+  width: 150px;
+  height: auto;
+  padding-right: 30px;
+}
+/* Mobile */
+@media screen and (max-width: 767px) {
+  .btn-checkout-box {
+    padding-left: 10%;
+  }
+  .img-produit-panier {
+    width: 150px;
+    height: auto;
+    padding-right: 30px;
+  }
+}

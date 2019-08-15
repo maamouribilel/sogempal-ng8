@@ -9,6 +9,9 @@ import { NotFoundComponent } from '../shared/components/not-found/not-found.comp
 import { PalettesComponent } from '../client-side/palettes/palettes.component';
 import { CaissesComponent } from '../client-side/caisses/caisses.component';
 import { PanierComponent } from '../client-side/panier/panier.component';
+import { OrderComponent } from '../client-side/order/order.component';
+import { Order2Component } from '../client-side/order2/order2.component';
+import { Order3Component } from '../client-side/order3/order3.component';
 
 // admin
 /*
@@ -30,6 +33,9 @@ const routes: Routes = [
   { path: 'palettes', component: PalettesComponent },
   { path: 'caisses', component: CaissesComponent },
   { path: 'panier', component: PanierComponent },
+  { path: 'order', component: OrderComponent },
+  { path: 'order2', component: Order2Component },
+  { path: 'order3', component: Order3Component },
   { path: 'not-found', component: NotFoundComponent },
 
   /*

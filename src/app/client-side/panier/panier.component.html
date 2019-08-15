@@ -1,11 +1,11 @@
 <app-header></app-header>
 <br />
-<div class="container" style="margin-top:160px;">
+<div class="container " style="margin-top:160px;">
   <p id="breadcrumb">
     <a [routerLink]="['/accueil']"><i class="fas fa-home"></i> Accueil</a>
-    Palettes en bois
+    Panier
   </p>
-  <table id="cart" class="table table-hover table-condensed table-responsive ">
+  <table id="cart" class="table table-hover table-condensed table-responsive">
     <div id="panier" *ngIf="shopList.length !== 0">
       <thead>
         <tr>
@@ -21,15 +21,20 @@
           <td data-th="Product">
             <div class="row">
               <div class="col-sm-10">
-                <h4 class="nomargin">{{ prod.name }}</h4>
-                <p>{{ prod.description }}.</p>
+                <h4 class="nomargin">
+                  <span
+                    ><img
+                      src="../../../assets/img/caisse-1.jpg"
+                      class="rounded img-fluid img-produit-panier"/></span
+                  >{{ prod.name }}
+                </h4>
               </div>
             </div>
           </td>
-          <td data-th="Price" id="unitaire{{ i }}">
-            {{ prod.price | currency }}
+          <td class="align-middle" data-th="Price" id="unitaire{{ i }}">
+            {{ prod.price | number: '1.2' }} TND
           </td>
-          <td data-th="Quantity">
+          <td class="align-middle" data-th="Quantity">
             <input
               type="number"
               name="quantity"
@@ -42,48 +47,54 @@
             />
           </td>
 
-          <td data-th="Subtotal" class="text-center" id="subTotal{{ i }}">
-            {{ prod.price * prod.quantity | currency }}
+          <td
+            data-th="Subtotal"
+            class="text-center align-middle"
+            id="subTotal{{ i }}"
+          >
+            {{ prod.price * prod.quantity | number: '1.2' }} TND
           </td>
-          <td class="actions" data-th="">
+          <td class="actions align-middle" data-th="">
             <button
               class="btn btn-danger btn-sm"
               (click)="onRemoveSlProduct(i)"
             >
-              <i class="fa fa-trash-o"></i>
+              <i class="fas fa-trash-alt"></i>
             </button>
           </td>
         </tr>
       </tbody>
     </div>
-    <div
-      class="alert alert-primary "
-      role="alert"
-      *ngIf="shopList.length === 0"
-    >
-      Le panier est vide! ajouter des produits s'il vous plaît.
-    </div>
-    <tfoot>
-      <tr>
-        <td>
-          <a routerLink="/palettes" class="btn btn-warning"
-            ><i class="fa fa-angle-left"></i> Continuer votre achat</a
-          >
-        </td>
-        <td colspan="2" class="hidden-xs"></td>
-        <td *ngIf="shopList.length !== 0" class="hidden-xs text-center">
-          <strong id="totalPrice"> {{ totalPrice | currency }}</strong>
-        </td>
-        <td>
-          <a
-            (click)="onCheckout()"
-            class="btn btn-success btn-block"
-            [class.disabled]="shopList.length === 0"
-            >Passer la commande <i class="fa fa-angle-right"></i
-          ></a>
-        </td>
-      </tr>
-    </tfoot>
   </table>
+
+  <div class="alert alert-panier" role="alert" *ngIf="shopList.length === 0">
+    Le panier est vide! ajouter des produits s'il vous plaît.
+  </div>
+  <div *ngIf="shopList.length !== 0" style="text-align: right;">
+    <strong id="totalPrice"
+      >Total : {{ totalPrice | number: '1.2' }} TND</strong
+    >
+    <br /><br />
+    <div class="row">
+      <div class="float-left">
+        <a routerLink="/palettes" class="btn btn-retour"
+          ><i class="fa fa-angle-left"></i> Continuer l'achat</a
+        >
+      </div>
+
+      <div class="btn-checkout-box">
+        <button
+          (click)="onCheckout()"
+          class="btn btn-checkout"
+          [class.disabled]="shopList.length === 0"
+        >
+          Passer la commande <i class="fa fa-angle-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
+<br />
+<br />
+
 <app-footer></app-footer>

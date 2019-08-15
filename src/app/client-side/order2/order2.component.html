@@ -1,0 +1,212 @@
+<app-header></app-header>
+<br />
+<div class="container" style="margin-top:160px;">
+  <div>
+    <div class="mt-5 mb-5 text-center">
+      <h2>ETAPE : 2</h2>
+    </div>
+    <ul class="step d-flex flex-nowrap">
+      <li class="step-item ">
+        <a href="#!" class="">Adresse</a>
+      </li>
+      <li class="step-item active">
+        <a href="#!" class="">Paiement</a>
+      </li>
+      <li class="step-item ">
+        <a href="#!" class="">Devis</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<hr />
+<!--End steps-->
+
+<div class="container d-flex justify-content-center">
+  <form
+    class="col-md-6 col-lg-6 card"
+    style="padding: 50px;"
+    (ngSubmit)="onSubmit(f2)"
+    #f2="ngForm"
+  >
+    <!--
+    <div class="form-group">
+      <label>N° de la carte bancaire</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter le numero de votre carte"
+        ngModel
+        name="numCarte"
+        required
+        #numCarte="ngModel"
+      />
+      <span *ngIf="numCarte.invalid && numCarte.touched" class="help-block"
+        >Merci d'entrer un numero de carte valide.</span
+      >
+    </div>
+    <div class="form-group">
+      <label>Ville</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Enter votre ville"
+        ngModel
+        name="ville"
+        required
+        #ville="ngModel"
+      />
+      <span *ngIf="ville.invalid && ville.touched" class="help-block"
+        >Merci d'entrer un nom de ville valide.</span
+      >
+    </div>
+    <div class="form-group">
+      <label>Code postal</label>
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Enter le code postal"
+        ngModel
+        name="postal"
+        required
+        #postal="ngModel"
+      />
+      <span *ngIf="postal.invalid && postal.touched" class="help-block"
+        >Merci d'entrer un code postal valide.</span
+      >
+      <br /><br />
+      <small class="form-text text-muted">
+        NB: Nous ne partagerons jamais vos inormations avec qui que ce
+        soit.</small
+      >
+    </div>
+    <div class="row">
+      <button
+        type="button"
+        class="col previous-btn btn btn-default float-left"
+        [disabled]="!f2.valid"
+      >
+        Suivant
+      </button>
+      <button
+        type="submit"
+        class="col next-btn btn float-right"
+        [disabled]="!f2.valid"
+      >
+        Suivant
+      </button>
+    </div>
+-->
+    <div class="form-group">
+      <label for="cardNumber"> NUMERO DE CARTE</label>
+      <div class="input-group">
+        <input
+          type="number"
+          class="form-control"
+          placeholder="Enter le numero de votre carte"
+          [(ngModel)]="paymentInfo.numCarte"
+          name="numCarte"
+          required
+          #numCarte="ngModel"
+          autofocus
+        />
+        <span class="input-group-addon"
+          ><span class="glyphicon glyphicon-lock"></span
+        ></span>
+      </div>
+      <span *ngIf="numCarte.invalid && numCarte.touched" class="help-block"
+        >Merci d'entrer un numero de carte valide.</span
+      >
+    </div>
+    <div class="row">
+      <div class="col-xs-7 col-md-7">
+        <div class="form-group">
+          <label for="expityMonth"> DATE D'EXPIRATION</label>
+          <div class="col-xs-6 col-lg-6 pl-ziro">
+            <input
+              type="number"
+              class="form-control"
+              id="expityMonth"
+              placeholder="MM"
+              [(ngModel)]="paymentInfo.moisCarte"
+              name="moisCarte"
+              #moisCarte="ngModel"
+              required
+            />
+            <span
+              *ngIf="moisCarte.invalid && moisCarte.touched"
+              class="help-block"
+              >Merci d'entrer un numero de mois valide.</span
+            >
+          </div>
+          <div class="col-xs-6 col-lg-6 pl-ziro">
+            <input
+              type="number"
+              class="form-control"
+              id="expityYear"
+              placeholder="YY"
+              [(ngModel)]="paymentInfo.anneeCarte"
+              name="anneeCarte"
+              #anneeCarte="ngModel"
+              required
+            />
+            <span
+              *ngIf="anneeCarte.invalid && anneeCarte.touched"
+              class="help-block"
+              >Merci d'entrer une année valide.</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-5 col-md-5 pull-right">
+        <div class="form-group">
+          <label for="cvCode"> CODE CVV</label>
+          <input
+            type="number"
+            class="form-control"
+            id="cvCode"
+            placeholder="CVV"
+            [(ngModel)]="paymentInfo.cvvCarte"
+            name="cvvCarte"
+            #cvvCarte="ngModel"
+            required
+          />
+          <span *ngIf="cvvCarte.invalid && cvvCarte.touched" class="help-block"
+            >Merci d'entrer un code CVV valide.</span
+          >
+        </div>
+      </div>
+    </div>
+    <br />
+    <small class="form-text text-muted">
+      NB: Nous ne partagerons jamais vos inormations avec qui que ce
+      soit.</small
+    >
+    <small class="form-text text-muted">
+      NB: Si vous continuez le paiement electronique sera effectué
+      automatiquement.</small
+    >
+    <br />
+    <div class="row">
+      <button
+        type="button"
+        class="col previous-btn btn btn-default float-left"
+        [routerLink]="['/order']"
+      >
+        Précedent
+      </button>
+      <button
+        type="submit"
+        class="col next-btn btn float-right"
+        [disabled]="!f2.valid"
+      >
+        Suivant
+      </button>
+    </div>
+  </form>
+</div>
+
+<br />
+<br />
+
+<app-footer></app-footer>
