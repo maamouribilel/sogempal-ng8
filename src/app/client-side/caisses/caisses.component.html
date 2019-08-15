@@ -9,22 +9,64 @@
   <ng-template #loadedContent>
     <div class="row">
       <div
+        class="col-sm-6 col-md-4 col-lg-4"
         *ngFor="let prod of products; let i = index"
-        class=" col-md-4 col-sm-6 col-xs-12 card"
-        style="width: 18rem;"
       >
-        <div class="card-body">
-          <h5 class="card-title">{{ prod.name }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">
-            {{ prod.price | currency }}
-          </h6>
-          <p class="card-text">{{ prod.description }}</p>
-          <a
-            (click)="onAddToSl(prod)"
-            class="card-link btn btn-primary"
-            style="cursor:pointer;"
-            >Add Product</a
-          >
+        <div class="card card-inverse card-info" style="padding: 10px;">
+          <img
+            class="card-img-top"
+            src="https://cdn1.palcaisse.com/99-medium_default/palette-sur-mesure-4-entrees.jpg"
+          />
+          <div class="card-block">
+            <div class="row meta card-text">
+              <div class="col-3 ">
+                <div class="d-flex justify-content-center llh-box">
+                  <i class="fas fa-weight-hanging llh-icons"></i>
+                </div>
+                <p class="llh-text">{{ prod.weight }}Kg</p>
+              </div>
+              <div class="col-3 ">
+                <div class="d-flex justify-content-center llh-box">
+                  <i class="fas fa-arrows-alt-h llh-icons"></i>
+                </div>
+                <p class="llh-text">{{ prod.length }}mm</p>
+              </div>
+              <div class="col-3 ">
+                <div class="d-flex justify-content-center llh-box">
+                  <i class="fas fa-ruler-vertical llh-icons"></i>
+                </div>
+                <p class="llh-text">{{ prod.height }}mm</p>
+              </div>
+              <div class="col-3 ">
+                <div class="d-flex justify-content-center llh-box">
+                  <i class="fas fa-ruler-horizontal llh-icons"></i>
+                </div>
+                <p class="llh-text">{{ prod.width }}mm</p>
+              </div>
+            </div>
+            <h4 class="card-title mt-3 llh-text">{{ prod.name }}</h4>
+            <div class="card-text llh-text">
+              {{ prod.description }}
+            </div>
+            <br />
+          </div>
+          <div class="card-footer">
+            <span>Prix : </span>
+            <small
+              style="color:#05582D; font-weight:bolder; font-size: 22px;"
+              >{{ prod.price | currency }}</small
+            >
+            <button
+              class="btn btn-default float-right ajouter-btn"
+              (click)="onAddToSl(prod)"
+            >
+              <span
+                ><img
+                  src="../../../assets/img/svg-icons/forklift-white.svg"
+                  style="width:1.5em; height:1.5em;"/></span
+              >AJOUTER
+            </button>
+          </div>
         </div>
       </div>
     </div>
