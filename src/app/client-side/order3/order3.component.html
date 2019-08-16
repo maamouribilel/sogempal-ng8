@@ -1,1 +1,132 @@
-<p>order3 works!</p>
+<app-header></app-header>
+<br />
+<div class="container" style="margin-top:160px;">
+  <div>
+    <div class="mt-5 mb-5 text-center">
+      <h2>ETAPE : 3</h2>
+    </div>
+    <ul class="step d-flex flex-nowrap">
+      <li class="step-item ">
+        <a class="">Adresse</a>
+      </li>
+      <li class="step-item ">
+        <a class="">Paiement</a>
+      </li>
+      <li class="step-item active">
+        <a class="">Reçu de Paiement</a>
+      </li>
+    </ul>
+  </div>
+  <!-- End stepper-->
+  <hr />
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body p-0">
+            <div class="row p-5">
+              <div class="col-md-6">
+                <img src="../../../assets/img/logo-sogempal-final.png" />
+              </div>
+
+              <div class="col-md-6 text-right">
+                <p class="font-weight-bold mb-1"></p>
+                <p class="text-muted">Date: {{ orderDetails.date | date }}</p>
+              </div>
+            </div>
+
+            <hr class="my-5" />
+
+            <div class="row pb-5 p-5">
+              <div class="col-md-6">
+                <p class="font-weight-bold mb-4">Information client</p>
+                <p class="mb-1">{{ orderDetails.nom | uppercase }}</p>
+                <p class="mb-1">{{ orderDetails.tel }}</p>
+                <p>{{ orderDetails.adresse.adresse }}</p>
+                <p class="mb-1">{{ orderDetails.adresse.ville }}</p>
+                <p class="mb-1">{{ orderDetails.adresse.postal }}</p>
+              </div>
+
+              <div class="col-md-6 text-right">
+                <p class="font-weight-bold mb-4">Details de paiement</p>
+                <p class="mb-1"><span class="text-muted">Etat : </span> PAYE</p>
+              </div>
+            </div>
+
+            <div class="row p-5">
+              <div class="col-md-12">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th
+                        class="border-0 text-uppercase small font-weight-bold"
+                      >
+                        Produit
+                      </th>
+                      <th
+                        class="border-0 text-uppercase small font-weight-bold"
+                      >
+                        Description
+                      </th>
+                      <th
+                        class="border-0 text-uppercase small font-weight-bold"
+                      >
+                        Quantité
+                      </th>
+                      <th
+                        class="border-0 text-uppercase small font-weight-bold"
+                      >
+                        Prix Unitaire
+                      </th>
+                      <th
+                        class="border-0 text-uppercase small font-weight-bold"
+                      >
+                        Total
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let prod of orderDetails.produits">
+                      <td>{{ prod.name }}</td>
+                      <td>{{ prod.description }}</td>
+                      <td>{{ prod.quantity }}</td>
+                      <td>{{ prod.price | number: '1.2' }}TND</td>
+                      <td>
+                        {{ prod.price * prod.quantity | number: '1.2' }}TND
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="d-flex flex-row-reverse bg-dark text-white p-4">
+              <div class="py-3 px-5 text-right">
+                <div class="mb-2">Prix Total</div>
+                <div class="h2 font-weight-light">
+                  {{ orderDetails.prixTotal * 1.13 | number: '1.2' }}TND
+                </div>
+              </div>
+
+              <div class="py-3 px-5 text-right">
+                <div class="mb-2">Taxe</div>
+                <div class="h2 font-weight-light">13%</div>
+              </div>
+
+              <div class="py-3 px-5 text-right">
+                <div class="mb-2">Prix total Hors-taxe</div>
+                <div class="h2 font-weight-light">
+                  {{ orderDetails.prixTotal | number: '1.2' }} TND
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br />
+<br />
+
+<app-footer></app-footer>

@@ -1,0 +1,68 @@
+.step {
+  list-style: none;
+  margin: 0.2rem 0;
+  width: 100%;
+}
+
+.step .step-item {
+  -ms-flex: 1 1 0;
+  flex: 1 1 0;
+  margin-top: 0;
+  min-height: 1rem;
+  position: relative;
+  text-align: center;
+}
+
+.step .step-item:not(:first-child)::before {
+  background: #05582d;
+  content: '';
+  height: 2px;
+  left: -50%;
+  position: absolute;
+  top: 9px;
+  width: 100%;
+}
+
+.step .step-item a {
+  color: #acb3c2;
+  display: inline-block;
+  padding: 20px 10px 0;
+  text-decoration: none;
+}
+
+.step .step-item a::before {
+  background: #05582d;
+  border: 0.1rem solid #fff;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  height: 0.9rem;
+  left: 50%;
+  position: absolute;
+  top: 0.2rem;
+  transform: translateX(-50%);
+  width: 0.9rem;
+  z-index: 1;
+}
+
+.step .step-item.active a::before {
+  background: #fff;
+  border: 0.1rem solid #05582d;
+}
+
+.step .step-item.active ~ .step-item::before {
+  background: #e7e9ed;
+}
+
+.step .step-item.active ~ .step-item a::before {
+  background: #e7e9ed;
+}
+
+.next-btn {
+  background-color: #c08e58;
+  color: white;
+}
+.next-btn:hover {
+  background-color: #a77847;
+  color: white;
+}

@@ -61,4 +61,9 @@ export class DataService {
     this.slProducts.splice(index, 1);
     localStorage.setItem('slProducts', JSON.stringify(this.slProducts));
   }
+
+  saveOrder() {
+    const order = JSON.parse(localStorage.getItem('orderDetails'));
+    this.firestore.collection('orders').add(order);
+  }
 }

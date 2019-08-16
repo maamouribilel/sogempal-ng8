@@ -70,7 +70,7 @@
   <div class="alert alert-panier" role="alert" *ngIf="shopList.length === 0">
     Le panier est vide! ajouter des produits s'il vous plaît.
   </div>
-  <div *ngIf="shopList.length !== 0" style="text-align: right;">
+  <div *ngIf="shopList != null" style="text-align: right;">
     <strong id="totalPrice"
       >Total : {{ totalPrice | number: '1.2' }} TND</strong
     >

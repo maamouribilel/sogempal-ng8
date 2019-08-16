@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order3',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./order3.component.css']
 })
 export class Order3Component implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
+  orderDetails: any;
+  constructor(private router: Router) {
+    if (JSON.parse(localStorage.getItem('orderDetails')) != null) {
+      this.orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+      console.log(this.orderDetails.date);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 
+  ngOnInit() {}
 }
