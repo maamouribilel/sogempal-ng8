@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
@@ -9,7 +9,6 @@ import domtoimage from 'dom-to-image';
   styleUrls: ['./order3.component.css']
 })
 export class Order3Component implements OnInit {
-  @ViewChild('invoice', { static: false }) invoice: ElementRef;
   orderDetails: any;
 
   constructor(private router: Router) {
@@ -59,9 +58,10 @@ export class Order3Component implements OnInit {
           filename = 'recu_de_paiement_' + this.orderDetails.nom + '.pdf';
           doc.save(filename);
         };
+        console.log('ca marche! ');
       })
       .catch(error => {
-        // Error Handling
+        console.log(error);
       });
   }
 }
