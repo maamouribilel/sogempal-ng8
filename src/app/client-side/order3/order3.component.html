@@ -19,17 +19,20 @@
   </div>
   <!-- End stepper-->
   <hr />
-  <div class="container">
+  <div class="container" id="invoice" style="padding: 50px;">
     <div class="row">
       <div class="col-12">
         <div class="card">
           <div class="card-body p-0">
             <div class="row p-5">
-              <div class="col-md-6">
-                <img src="../../../assets/img/logo-sogempal-final.png" />
+              <div class="col-md-6 col-xs-12 ">
+                <img
+                  class="img img-fluid"
+                  src="../../../assets/img/logo-sogempal-final.png"
+                />
               </div>
 
-              <div class="col-md-6 text-right">
+              <div class="col-md-6 col-xs-12 text-right">
                 <p class="font-weight-bold mb-1"></p>
                 <p class="text-muted">Date: {{ orderDetails.date | date }}</p>
               </div>
@@ -38,7 +41,7 @@
             <hr class="my-5" />
 
             <div class="row pb-5 p-5">
-              <div class="col-md-6">
+              <div class="col-md-6 col-xs-12 ">
                 <p class="font-weight-bold mb-4">Information client</p>
                 <p class="mb-1">{{ orderDetails.nom | uppercase }}</p>
                 <p class="mb-1">{{ orderDetails.tel }}</p>
@@ -47,14 +50,14 @@
                 <p class="mb-1">{{ orderDetails.adresse.postal }}</p>
               </div>
 
-              <div class="col-md-6 text-right">
+              <div class="col-md-6 text-right col-xs-12 ">
                 <p class="font-weight-bold mb-4">Details de paiement</p>
                 <p class="mb-1"><span class="text-muted">Etat : </span> PAYE</p>
               </div>
             </div>
 
             <div class="row p-5">
-              <div class="col-md-12">
+              <div class="col-md-12 col-xs-12 ">
                 <table class="table">
                   <thead>
                     <tr>
@@ -100,7 +103,9 @@
               </div>
             </div>
 
-            <div class="d-flex flex-row-reverse bg-dark text-white p-4">
+            <div
+              class="d-flex flex-row-reverse bg-dark text-white p-4 col-xs-12 "
+            >
               <div class="py-3 px-5 text-right">
                 <div class="mb-2">Prix Total</div>
                 <div class="h2 font-weight-light">
@@ -108,12 +113,12 @@
                 </div>
               </div>
 
-              <div class="py-3 px-5 text-right">
+              <div class="py-3 px-5 text-right col-xs-12 ">
                 <div class="mb-2">Taxe</div>
                 <div class="h2 font-weight-light">13%</div>
               </div>
 
-              <div class="py-3 px-5 text-right">
+              <div class="py-3 px-5 text-right col-xs-12 ">
                 <div class="mb-2">Prix total Hors-taxe</div>
                 <div class="h2 font-weight-light">
                   {{ orderDetails.prixTotal | number: '1.2' }} TND
@@ -126,7 +131,13 @@
     </div>
   </div>
 </div>
+
 <br />
+<div style="text-align: center;">
+  <button class="btn next-btn" (click)="makePdf()">
+    Télécharger le reçu de paiement
+  </button>
+</div>
 <br />
 
 <app-footer></app-footer>
