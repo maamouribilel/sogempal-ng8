@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  Renderer
+} from '@angular/core';
 import { Router } from '@angular/router';
 import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
@@ -10,6 +16,8 @@ import domtoimage from 'dom-to-image';
 })
 export class Order3Component implements OnInit {
   orderDetails: any;
+  @ViewChild('invoice', { static: false }) invoice: ElementRef;
+  // xepOnline: any;
 
   constructor(private router: Router) {
     if (JSON.parse(localStorage.getItem('orderDetails')) != null) {

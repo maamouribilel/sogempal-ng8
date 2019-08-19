@@ -1,54 +1,67 @@
-<div class="displayTable">
+<div class="displayTable" style="background-color: #f5f5f5!important;">
   <div class="displayTableCell">
-
     <div class="px-logo">
-      <a href="https://www.positronx.io" target="_blank">
-        <img src="https://www.positronx.io/wp-content/themes/positronx/img/logo-positronx-white.svg" alt="positronX.io - Learn Full Stack Development">
-      </a>
+      <img src="../../../assets/img/logo-sogempal-final.png" />
     </div>
 
     <div class="authBlock">
-      <h3>Sign In</h3>
-      <div class="formGroup">
-        <input type="text" class="formControl" placeholder="Username" #userName required>
-      </div>
+      <h3>Authentification</h3>
+      <form (ngSubmit)="onSignIn(signInForm)" #signInForm="ngForm">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter votre email"
+            name="email"
+            required
+            #email="ngModel"
+            ngModel
+          />
+          <span *ngIf="email.invalid && email.touched" class="help-block"
+            >Merci d'entrer un email valide.</span
+          >
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter votre mot de passe"
+            name="password"
+            required
+            #password="ngModel"
+            ngModel
+          />
+          <span *ngIf="password.invalid && password.touched" class="help-block"
+            >Merci d'entrer un mot de passe valide.</span
+          >
+        </div>
+
+        <!-- Calling SignIn Api from AuthService -->
+        <div class="formGroup">
+          <button
+            class="btn btn-login"
+            type="submit"
+            [disabled]="!signInForm.valid"
+          >
+            Se connecter
+          </button>
+        </div>
+      </form>
 
       <div class="formGroup">
-        <input type="password" class="formControl" placeholder="Password" #userPassword required>
+        <span class="or"><span class="orInner">Ou</span></span>
       </div>
-
-      <!-- Calling SignIn Api from AuthService -->
-      <div class="formGroup">
-        <input type="button" class="btn btnPrimary" value="Log in" (click)="authService.SignIn(userName.value, userPassword.value)">
-      </div>
-
-      <div class="formGroup">
-        <span class="or"><span class="orInner">Or</span></span>
-      </div>
-
       <!-- Calling GoogleAuth Api from AuthService -->
       <div class="formGroup">
-        <button type="button" class="btn googleBtn" (click)="authService.GoogleAuth()">
+        <button type="button" class="btn googleBtn" (click)="onGoogleAuth()">
           <i class="fab fa-google-plus-g"></i>
           Log in with Google
         </button>
       </div>
-      <!-- Calling facebookAuth Api from AuthService -->
-      <div class="formGroup">
-        <button type="button" class="btn facebookBtn " (click)="authService.FacebookAuth()">
-          <i class="fab fa-facebook" aria-hidden="true"></i>
-          Log in with facebook
-        </button>
-      </div>
 
       <div class="forgotPassword">
-        <span routerLink="/forgot-password">Forgot Password?</span>
+        <span routerLink="/forgot-password">Mot de passe oublié?</span>
       </div>
     </div>
-
-    <div class="redirectToLogin">
-      <span>Don't have an account?<span class="redirect" routerLink="/register-user"> Sign Up</span></span>
-    </div>
-
   </div>
 </div>

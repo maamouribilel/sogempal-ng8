@@ -36,7 +36,7 @@ h6 {
   display: block;
   clear: both;
   margin: 0 auto 20px;
-  width: 220px;
+  width: 310px;
 }
 
 .px-logo a img {
@@ -47,7 +47,7 @@ h6 {
   display: table;
   width: 100%;
   height: 100%;
-  background: #3f51b5;
+  background: #05582d;
 }
 
 .displayTableCell {
@@ -123,14 +123,14 @@ input:-moz-placeholder {
   font-size: 16px;
   font-weight: 600;
   padding: 15px 0;
-  background: #15cd72;
+  background: #05582d;
   color: #ffffff;
   cursor: pointer;
   outline: none;
 }
 
 .displayTable .btn:hover {
-  opacity: 0.88;
+  opacity: 0.95;
 }
 
 .displayTable .btnSecondary {
@@ -140,10 +140,6 @@ input:-moz-placeholder {
 
 .displayTable .googleBtn {
   background: #eb5e4c;
-}
-
-.displayTable .facebookBtn {
-  background: #5d82d1;
 }
 
 .or {
@@ -270,7 +266,7 @@ input:-moz-placeholder {
 .sidebar a:hover,
 a:not([href]):not([tabindex]):focus,
 a:not([href]):not([tabindex]):hover {
-  color: #e91e63;
+  color: #a77847;
   background: #efefef;
 }
 
@@ -314,7 +310,7 @@ a:not([href]):not([tabindex]):hover {
 }
 
 .form-control:focus {
-  border-color: #00bcd4;
+  border-color: #05582d;
   box-shadow: none;
 }
 
@@ -323,7 +319,7 @@ a:not([href]):not([tabindex]):hover {
 }
 
 .bg-dark {
-  background-color: #3f51b5 !important;
+  background-color: #05582d !important;
 }
 
 .gap-right {
@@ -345,11 +341,11 @@ i {
 }
 
 .action-block .fa-edit:hover {
-  color: #009688;
+  color: #05582d;
 }
 
 .action-block .fa-trash-alt:hover {
-  color: #e91e63;
+  color: #a77847;
 }
 
 .btn-primary.focus,
@@ -371,7 +367,7 @@ body .ngx-pagination li:last-child {
 }
 
 body .ngx-pagination .current {
-  background: #055af9;
+  background: #05582d;
 }
 
 .ngx-pagination a:hover,

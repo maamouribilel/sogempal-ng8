@@ -14,5 +14,11 @@ export class DashboardComponent implements OnInit {
     public ngZone: NgZone
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this.authService.isAdmin() && this.authService.isLoggedIn()) {
+      console.log('mrigel alkeher');
+    } else {
+      console.log('mouch mrigel');
+    }
+  }
 }
