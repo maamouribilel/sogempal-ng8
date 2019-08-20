@@ -12066,3 +12066,22 @@ body.sidebar-toggled footer.sticky-footer {
   background-color: #076434;
   color: #fff;
 }
+.my-btn-sec{
+  background-color: #A77847;
+  color: #fff;
+}
+.my-btn-sec:hover{
+  background-color: rgb(185, 134, 78);
+  color: #fff;
+}
+.activeLink{
+  background-color: #014422;
+  color: #fff;
+  font-weight: bold;
+}
+.my-icon-danger{
+  color: #e74a3b;
+}
+.my-icon-info{
+  color: #36b9cc;
+}

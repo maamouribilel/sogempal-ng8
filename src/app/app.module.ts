@@ -38,6 +38,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrderComponent } from './client-side/order/order.component';
 import { Order2Component } from './client-side/order2/order2.component';
 import { Order3Component } from './client-side/order3/order3.component';
+import { LazyDashboardModule } from './modules/lazy-dashboard/lazy-dashboard.module';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { Order3Component } from './client-side/order3/order3.component';
     // imports firebase/app needed for everything
     AngularFirestoreModule.enablePersistence(), // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    LazyDashboardModule
   ],
   providers: [AuthService, DataService],
   bootstrap: [AppComponent]

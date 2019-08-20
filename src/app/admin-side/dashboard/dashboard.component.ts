@@ -8,17 +8,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+  userData: any;
   constructor(
     public authService: AuthService,
     public router: Router,
     public ngZone: NgZone
-  ) {}
-
-  ngOnInit() {
+  ) {
     if (this.authService.isAdmin() && this.authService.isLoggedIn()) {
-      console.log('mrigel alkeher');
+      this.userData = JSON.parse(localStorage.getItem('userData'));
+      console.log('mrigel');
     } else {
       console.log('mouch mrigel');
     }
   }
+
+  ngOnInit() {}
 }
