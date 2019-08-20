@@ -39,6 +39,7 @@ import { OrderComponent } from './client-side/order/order.component';
 import { Order2Component } from './client-side/order2/order2.component';
 import { Order3Component } from './client-side/order3/order3.component';
 import { LazyDashboardModule } from './modules/lazy-dashboard/lazy-dashboard.module';
+import { AddProductComponent } from './admin-side/products/add-product/add-product.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { LazyDashboardModule } from './modules/lazy-dashboard/lazy-dashboard.mod
     CaissesComponent,
     OrderComponent,
     Order2Component,
-    Order3Component
+    Order3Component,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,

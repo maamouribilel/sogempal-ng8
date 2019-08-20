@@ -12066,6 +12066,14 @@ body.sidebar-toggled footer.sticky-footer {
   background-color: #076434;
   color: #fff;
 }
+.my-btn-primary{
+  background-color: #4e73df;
+  color: #fff;
+}
+.my-btn-primary:hover{
+  background-color: #3b61d4;
+  color: #fff;
+}
 .my-btn-sec{
   background-color: #A77847;
   color: #fff;
