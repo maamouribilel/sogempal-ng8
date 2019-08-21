@@ -10,6 +10,7 @@ import { ProductsComponent } from 'src/app/admin-side/products/products.componen
 import { OrdersComponent } from 'src/app/admin-side/orders/orders.component';
 import { UsersComponent } from 'src/app/admin-side/users/users.component';
 import { ContactsComponent } from 'src/app/admin-side/contacts/contacts.component';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ContactsComponent } from 'src/app/admin-side/contacts/contacts.componen
     CommonModule,
     DashboardRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    DataTablesModule
   ]
 })
 export class LazyDashboardModule {}

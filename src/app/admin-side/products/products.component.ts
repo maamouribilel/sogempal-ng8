@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 import { BackDataService } from '../shared/services/back-data.service';
-import { Subscription } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
@@ -12,6 +12,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit, OnDestroy {
+  dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<any> = new Subject();
   userData: any;
   products: any[] = [];
   productsSubscription: Subscription;
@@ -48,10 +50,20 @@ export class ProductsComponent implements OnInit, OnDestroy {
       .getProducts()
       .subscribe(res => {
         this.products = res;
+        this.dtTrigger.next();
       });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 4,
+      lengthMenu: [4, 8, 15, 20],
+      language: {
+        url: '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json'
+      }
+    };
+  }
   ngOnDestroy(): void {
     this.productsSubscription.unsubscribe();
   }

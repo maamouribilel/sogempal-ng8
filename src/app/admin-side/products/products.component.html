@@ -211,10 +211,13 @@
           <div class="card-body">
             <div class="table-responsive">
               <table
-                class="table table-bordered"
-                id="productsTable"
+                class="table table-hover"
                 width="100%"
                 cellspacing="0"
+                datatable
+                [dtOptions]="dtOptions"
+                [dtTrigger]="dtTrigger"
+                id="example"
               >
                 <thead>
                   <tr>
