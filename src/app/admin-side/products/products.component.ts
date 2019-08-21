@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ViewChild,
+  ElementRef
+} from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 import { BackDataService } from '../shared/services/back-data.service';
 import { Subscription, Subject } from 'rxjs';
@@ -35,6 +41,8 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   // update or add
   actionType = 'add';
+  // show or hide modal
+  @ViewChild('closeModal', { static: false }) closeModal: ElementRef;
 
   constructor(
     public authService: AuthService,
@@ -168,6 +176,17 @@ export class ProductsComponent implements OnInit, OnDestroy {
         addedDate: new Date()
       };
       this.backDataService.updateProduct(newProd);
+      // reset data
+      this.hiddenId.setValue('');
+      this.nameInput.setValue('');
+      this.descriptionInput.setValue('');
+      this.categoryInput.setValue('');
+      this.priceInput.setValue('');
+      this.quantityInput.setValue('');
+      this.lengthInput.setValue('');
+      this.widthInput.setValue('');
+      this.heightInput.setValue('');
+      this.weightInput.setValue('');
     } else {
       const newProd: any = {
         hiddenId: this.hiddenId.value,
@@ -183,6 +202,17 @@ export class ProductsComponent implements OnInit, OnDestroy {
         addedDate: new Date()
       };
       this.backDataService.updateProduct(newProd);
+      // reset data
+      this.hiddenId.setValue('');
+      this.nameInput.setValue('');
+      this.descriptionInput.setValue('');
+      this.categoryInput.setValue('');
+      this.priceInput.setValue('');
+      this.quantityInput.setValue('');
+      this.lengthInput.setValue('');
+      this.widthInput.setValue('');
+      this.heightInput.setValue('');
+      this.weightInput.setValue('');
     }
   }
 
