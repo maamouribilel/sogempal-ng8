@@ -16,11 +16,16 @@ export class BackDataService {
   ) {}
   // get products data
   getProducts(): Observable<any[]> {
-    return this.firestore.collection<any[]>('products').valueChanges();
+    return this.firestore.collection('products').snapshotChanges();
   }
   // add product
   addProduct(newProd: any) {
     this.firestore.collection('products').add(newProd);
     this.toastr.success('Le produit & été ajouté avec success!');
+  }
+  // delete product
+  deleteProduct(prodId: string) {
+    this.firestore.doc('products/' + prodId).delete();
+    this.toastr.success('product deleted successfully !', 'Detele products!');
   }
 }

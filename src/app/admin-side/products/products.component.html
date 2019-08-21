@@ -258,7 +258,10 @@
                       <a class="btn my-icon-info" style="cursor: pointer;"
                         ><i class="fas fa-edit my-icon-info"></i
                       ></a>
-                      <a class="btn my-icon-danger" style="cursor: pointer;"
+                      <a
+                        class="btn my-icon-danger"
+                        style="cursor: pointer;"
+                        (click)="onDeleteProd(prod.id)"
                         ><i class="fas fa-trash my-icon-danger"></i
                       ></a>
                     </td>

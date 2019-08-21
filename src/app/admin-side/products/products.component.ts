@@ -49,7 +49,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.productsSubscription = this.backDataService
       .getProducts()
       .subscribe(res => {
-        this.products = res;
+        console.log(res);
+        this.products = res.map(item => {
+          return {
+            id: item.payload.doc.id,
+            ...item.payload.doc.data()
+          };
+        });
         this.dtTrigger.next();
       });
   }
@@ -64,6 +70,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       }
     };
   }
+
   ngOnDestroy(): void {
     this.productsSubscription.unsubscribe();
   }
@@ -97,8 +104,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
       // image
     };
 
-    console.log('TCL: ProductsComponent -> onAddProduct -> newProd', newProd);
-
     this.backDataService.addProduct(newProd);
 
     this.hiddenId.setValue('');
@@ -113,12 +118,15 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.weightInput.setValue('');
 
     /*
-    this.timeInput.setValue('');
-    this.subjectInput.setValue('');
-    this.locationInput.setValue('');
-    this.descriptionInput.setValue('');
-
     this.modal.hide();
   */
+  }
+
+  // delete product
+  onDeleteProd(prodId: string) {
+    if (confirm('Are you sure?')) {
+      this.backDataService.deleteProduct(prodId);
+      this.dtTrigger.next();
+    }
   }
 }
