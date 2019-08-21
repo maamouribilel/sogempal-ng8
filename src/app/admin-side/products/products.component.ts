@@ -94,6 +94,16 @@ export class ProductsComponent implements OnInit, OnDestroy {
   // onAddtrigger
   onAddTrigger() {
     this.actionType = 'add';
+    this.hiddenId.setValue('');
+    this.nameInput.setValue('');
+    this.descriptionInput.setValue('');
+    this.categoryInput.setValue('');
+    this.priceInput.setValue('');
+    this.quantityInput.setValue('');
+    this.lengthInput.setValue('');
+    this.widthInput.setValue('');
+    this.heightInput.setValue('');
+    this.weightInput.setValue('');
   }
   /// add product
   onAddProduct() {
@@ -176,17 +186,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
         addedDate: new Date()
       };
       this.backDataService.updateProduct(newProd);
-      // reset data
-      this.hiddenId.setValue('');
-      this.nameInput.setValue('');
-      this.descriptionInput.setValue('');
-      this.categoryInput.setValue('');
-      this.priceInput.setValue('');
-      this.quantityInput.setValue('');
-      this.lengthInput.setValue('');
-      this.widthInput.setValue('');
-      this.heightInput.setValue('');
-      this.weightInput.setValue('');
     } else {
       const newProd: any = {
         hiddenId: this.hiddenId.value,
@@ -202,17 +201,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
         addedDate: new Date()
       };
       this.backDataService.updateProduct(newProd);
-      // reset data
-      this.hiddenId.setValue('');
-      this.nameInput.setValue('');
-      this.descriptionInput.setValue('');
-      this.categoryInput.setValue('');
-      this.priceInput.setValue('');
-      this.quantityInput.setValue('');
-      this.lengthInput.setValue('');
-      this.widthInput.setValue('');
-      this.heightInput.setValue('');
-      this.weightInput.setValue('');
     }
   }
 
