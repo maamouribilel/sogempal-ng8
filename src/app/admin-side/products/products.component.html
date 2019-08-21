@@ -201,6 +201,7 @@
             class="btn my-btn-primary  btn-sm shadow-sm"
             data-toggle="modal"
             data-target="#addProductModal"
+            (click)="onAddTrigger()"
           >
             <i class="fas fa-plus fa-sm text-white-50"></i> Ajouter Produit
           </button>
@@ -255,7 +256,12 @@
                     <td>{{ prod.quantity }}</td>
                     <td>2011/04/25</td>
                     <td>
-                      <a class="btn my-icon-info" style="cursor: pointer;"
+                      <a
+                        class="btn my-icon-info"
+                        style="cursor: pointer;"
+                        (click)="onUpdateTrigger(prod)"
+                        data-toggle="modal"
+                        data-target="#addProductModal"
                         ><i class="fas fa-edit my-icon-info"></i
                       ></a>
                       <a
@@ -353,7 +359,20 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Ajouter un produit</h5>
+        <h5
+          class="modal-title"
+          id="exampleModalLabel"
+          *ngIf="actionType === 'add'"
+        >
+          Ajouter un produit
+        </h5>
+        <h5
+          class="modal-title"
+          id="exampleModalLabel"
+          *ngIf="actionType === 'update'"
+        >
+          Mettre à jour produit
+        </h5>
         <button
           class="close"
           type="button"
@@ -484,10 +503,18 @@
           </div>
           <br />
           <button
+            *ngIf="actionType === 'add'"
             (click)="onAddProduct()"
             class="btn btn-primary btn-user btn-block"
           >
             Ajouter
+          </button>
+          <button
+            *ngIf="actionType === 'update'"
+            (click)="onUpdateProduct()"
+            class="btn btn-primary btn-user btn-block"
+          >
+            Mettre à jour
           </button>
         </form>
       </div>

@@ -23,6 +23,13 @@ export class BackDataService {
     this.firestore.collection('products').add(newProd);
     this.toastr.success('Le produit & été ajouté avec success!');
   }
+  // updae product
+  updateProduct(newProd: any) {
+    const id = newProd.hiddenId;
+    delete newProd.hiddenId;
+    this.firestore.doc('products/' + id).update(newProd);
+    this.toastr.success('Product updated successfully !', 'Update Product!');
+  }
   // delete product
   deleteProduct(prodId: string) {
     this.firestore.doc('products/' + prodId).delete();

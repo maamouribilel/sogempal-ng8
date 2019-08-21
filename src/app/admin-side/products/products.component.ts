@@ -32,6 +32,10 @@ export class ProductsComponent implements OnInit, OnDestroy {
   widthInput = new FormControl();
   heightInput = new FormControl();
   weightInput = new FormControl();
+
+  // update or add
+  actionType = 'add';
+
   constructor(
     public authService: AuthService,
     private backDataService: BackDataService,
@@ -79,7 +83,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.selectedFile = event.target.files[0];
     console.log(event);
   }
-
+  // onAddtrigger
+  onAddTrigger() {
+    this.actionType = 'add';
+  }
+  /// add product
   onAddProduct() {
     // img upload
     const file = this.selectedFile;
@@ -120,6 +128,62 @@ export class ProductsComponent implements OnInit, OnDestroy {
     /*
     this.modal.hide();
   */
+  }
+  // update product
+  onUpdateTrigger(prod) {
+    this.actionType = 'update';
+    // set form data
+    this.hiddenId.setValue(prod.id);
+    this.nameInput.setValue(prod.name);
+    this.descriptionInput.setValue(prod.description);
+    this.categoryInput.setValue(prod.category);
+    this.priceInput.setValue(prod.price);
+    this.quantityInput.setValue(prod.quantity);
+    this.lengthInput.setValue(prod.length);
+    this.widthInput.setValue(prod.width);
+    this.heightInput.setValue(prod.height);
+    this.weightInput.setValue(prod.weight);
+  }
+  // update product
+  onUpdateProduct() {
+    // img upload
+    const file = this.selectedFile;
+    if (file) {
+      const task = this.storage.upload('img/' + file.name, file);
+      this.productImage = {
+        name: file.name
+      };
+      const newProd: any = {
+        hiddenId: this.hiddenId.value,
+        name: this.nameInput.value,
+        description: this.descriptionInput.value,
+        category: this.categoryInput.value,
+        price: this.priceInput.value,
+        quantity: this.quantityInput.value,
+        length: this.lengthInput.value,
+        width: this.widthInput.value,
+        height: this.heightInput.value,
+        weight: this.weightInput.value,
+        image: this.productImage,
+        addedDate: new Date()
+      };
+      this.backDataService.updateProduct(newProd);
+    } else {
+      const newProd: any = {
+        hiddenId: this.hiddenId.value,
+        name: this.nameInput.value,
+        description: this.descriptionInput.value,
+        category: this.categoryInput.value,
+        price: this.priceInput.value,
+        quantity: this.quantityInput.value,
+        length: this.lengthInput.value,
+        width: this.widthInput.value,
+        height: this.heightInput.value,
+        weight: this.weightInput.value,
+        addedDate: new Date()
+      };
+      this.backDataService.updateProduct(newProd);
+    }
   }
 
   // delete product
