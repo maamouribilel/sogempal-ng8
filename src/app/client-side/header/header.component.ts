@@ -11,7 +11,7 @@ export class HeaderComponent implements OnInit, DoCheck {
   slProducts: any[] = [];
   constructor(
     public afAuth: AngularFireAuth,
-    private clientAuthService: ClientAuthService
+    public clientAuthService: ClientAuthService
   ) {}
 
   ngOnInit() {

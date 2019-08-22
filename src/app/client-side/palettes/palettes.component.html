@@ -15,7 +15,9 @@
         <div class="card card-inverse card-info" style="padding: 10px;">
           <img
             class="card-img-top"
-            src="https://cdn1.palcaisse.com/99-medium_default/palette-sur-mesure-4-entrees.jpg"
+            src="https://firebasestorage.googleapis.com/v0/b/sogempal-33bb7.appspot.com/o/img%2F{{
+              prod.image.name
+            }}?alt=media&token=8d725787-23d4-4b94-9f27-b21881e131c0"
           />
           <div class="card-block">
             <div class="row meta card-text">
@@ -52,9 +54,8 @@
           </div>
           <div class="card-footer">
             <span>Prix : </span>
-            <small
-              style="color:#05582D; font-weight:bolder; font-size: 22px;"
-              >{{ prod.price | currency }}</small
+            <small style="color:#05582D; font-weight:bolder; font-size: 22px;"
+              >{{ prod.price | number: '1.2' }} TND</small
             >
             <button
               class="btn btn-default float-right ajouter-btn"

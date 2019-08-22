@@ -3,26 +3,32 @@ import {
   OnInit,
   ViewChild,
   ElementRef,
-  Renderer
+  OnDestroy
 } from '@angular/core';
 import { Router } from '@angular/router';
 import * as jsPDF from 'jspdf';
 import domtoimage from 'dom-to-image';
+import { ClientAuthService } from '../services/client-auth.service';
 
 @Component({
   selector: 'app-order3',
   templateUrl: './order3.component.html',
   styleUrls: ['./order3.component.css']
 })
-export class Order3Component implements OnInit {
+export class Order3Component implements OnInit, OnDestroy {
   orderDetails: any;
   @ViewChild('invoice', { static: false }) invoice: ElementRef;
   // xepOnline: any;
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private clientAuthService: ClientAuthService
+  ) {
+    // check if not logged
+    this.clientAuthService.checkNotLogged();
+    // parse order details
     if (JSON.parse(localStorage.getItem('orderDetails')) != null) {
       this.orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
-      console.log(this.orderDetails.date);
     } else {
       this.router.navigate(['/']);
     }
@@ -66,10 +72,13 @@ export class Order3Component implements OnInit {
           filename = 'recu_de_paiement_' + this.orderDetails.nom + '.pdf';
           doc.save(filename);
         };
-        console.log('ca marche! ');
       })
       .catch(error => {
         console.log(error);
       });
+  }
+
+  ngOnDestroy() {
+    localStorage.removeItem('orderDetails');
   }
 }

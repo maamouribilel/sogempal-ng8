@@ -29,74 +29,6 @@
     (ngSubmit)="onSubmit(f2)"
     #f2="ngForm"
   >
-    <!--
-    <div class="form-group">
-      <label>N° de la carte bancaire</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter le numero de votre carte"
-        ngModel
-        name="numCarte"
-        required
-        #numCarte="ngModel"
-      />
-      <span *ngIf="numCarte.invalid && numCarte.touched" class="help-block"
-        >Merci d'entrer un numero de carte valide.</span
-      >
-    </div>
-    <div class="form-group">
-      <label>Ville</label>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Enter votre ville"
-        ngModel
-        name="ville"
-        required
-        #ville="ngModel"
-      />
-      <span *ngIf="ville.invalid && ville.touched" class="help-block"
-        >Merci d'entrer un nom de ville valide.</span
-      >
-    </div>
-    <div class="form-group">
-      <label>Code postal</label>
-      <input
-        type="number"
-        class="form-control"
-        placeholder="Enter le code postal"
-        ngModel
-        name="postal"
-        required
-        #postal="ngModel"
-      />
-      <span *ngIf="postal.invalid && postal.touched" class="help-block"
-        >Merci d'entrer un code postal valide.</span
-      >
-      <br /><br />
-      <small class="form-text text-muted">
-        NB: Nous ne partagerons jamais vos inormations avec qui que ce
-        soit.</small
-      >
-    </div>
-    <div class="row">
-      <button
-        type="button"
-        class="col previous-btn btn btn-default float-left"
-        [disabled]="!f2.valid"
-      >
-        Suivant
-      </button>
-      <button
-        type="submit"
-        class="col next-btn btn float-right"
-        [disabled]="!f2.valid"
-      >
-        Suivant
-      </button>
-    </div>
--->
     <div class="form-group">
       <label for="cardNumber"> NUMERO DE CARTE</label>
       <div class="input-group">
@@ -200,7 +132,7 @@
         class="col next-btn btn float-right"
         [disabled]="!f2.valid"
       >
-        Suivant
+        Continuer
       </button>
     </div>
   </form>

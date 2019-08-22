@@ -19,7 +19,7 @@
   </div>
   <!-- End stepper-->
   <hr />
-  <div #invoice class="container" id="invoice" style="padding: 50px;">
+  <div #invoice class="container" id="invoice" style="padding: 100px;">
     <div class="row">
       <div class="col-12">
         <div class="card">
@@ -34,7 +34,7 @@
 
               <div class="col-md-6 col-xs-12 text-right">
                 <p class="font-weight-bold mb-1"></p>
-                <p class="text-muted">Date: {{ orderDetails.date | date }}</p>
+                <p class="text-muted">Date: {{ orderDetails.date }}</p>
               </div>
             </div>
 
@@ -84,7 +84,7 @@
                       <th
                         class="border-0 text-uppercase small font-weight-bold"
                       >
-                        Total
+                        Total par produit
                       </th>
                     </tr>
                   </thead>

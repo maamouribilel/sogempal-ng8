@@ -28,7 +28,7 @@
         routerLinkActive="activeLink"
       >
         <i class="fas fa-fw fa-tachometer-alt"></i>
-        <span>Produits</span></a
+        <span>Dashboard</span></a
       >
     </li>
 
@@ -222,12 +222,14 @@
               >
                 <thead>
                   <tr>
-                    <th>Produit</th>
-                    <th>Description</th>
-                    <th>Prix</th>
-                    <th>Quantité</th>
-                    <th>Date d'ajout</th>
-                    <th>Actions</th>
+                    <th style="width:150px;">Image</th>
+                    <th style="width:150px;">Produit</th>
+                    <th style="width:100px;">Catégorie</th>
+                    <th style="width:250px;">Description</th>
+                    <th style="width:100px;">Prix</th>
+                    <th style="width:100px;">Quantité</th>
+                    <th style="width:150px;">Date d'ajout</th>
+                    <th style="width:150px;">Actions</th>
                   </tr>
                 </thead>
                 <tfoot>
@@ -244,17 +246,18 @@
                   <tr *ngFor="let prod of products; let i = index">
                     <td>
                       <img
-                        height="50px;"
+                        height="75px;"
                         src="https://firebasestorage.googleapis.com/v0/b/sogempal-33bb7.appspot.com/o/img%2F{{
                           prod.image.name
                         }}?alt=media&token=8d725787-23d4-4b94-9f27-b21881e131c0"
                       />
-                      {{ prod.name }}
                     </td>
+                    <td>{{ prod.name }}</td>
+                    <td>{{ prod.category }}</td>
                     <td>{{ prod.description }}</td>
                     <td>{{ prod.price | number: '1.2' }} TND</td>
                     <td>{{ prod.quantity }}</td>
-                    <td>2011/04/25</td>
+                    <td>{{ prod.addedDate }}</td>
                     <td>
                       <a
                         class="btn my-icon-info"
@@ -262,8 +265,8 @@
                         (click)="onUpdateTrigger(prod)"
                         data-toggle="modal"
                         data-target="#addProductModal"
-                        ><i class="fas fa-edit my-icon-info"></i
-                      ></a>
+                        ><i class="fas fa-edit my-icon-info"></i></a
+                      >&nbsp;&nbsp;
                       <a
                         class="btn my-icon-danger"
                         style="cursor: pointer;"
@@ -508,7 +511,7 @@
             *ngIf="actionType === 'add'"
             (click)="onAddProduct()"
             (click)="closeModal.click()"
-            class="btn btn-primary btn-user btn-block"
+            class="btn my-btn btn-user btn-block"
           >
             Ajouter
           </button>
@@ -516,7 +519,7 @@
             *ngIf="actionType === 'update'"
             (click)="onUpdateProduct()"
             (click)="closeModal.click()"
-            class="btn btn-primary btn-user btn-block"
+            class="btn my-btn btn-user btn-block"
           >
             Mettre à jour
           </button>

@@ -9,7 +9,7 @@
     <div id="panier" *ngIf="shopList.length !== 0">
       <thead>
         <tr>
-          <th style="width:50%">Produit</th>
+          <th style="width:60%">Produit</th>
           <th style="width:10%">Prix</th>
           <th style="width:8%">Quantité</th>
           <th style="width:22%" class="text-center">Sous-total</th>
@@ -24,7 +24,9 @@
                 <h4 class="nomargin">
                   <span
                     ><img
-                      src="../../../assets/img/caisse-1.jpg"
+                      src="https://firebasestorage.googleapis.com/v0/b/sogempal-33bb7.appspot.com/o/img%2F{{
+                        prod.image.name
+                      }}?alt=media&token=8d725787-23d4-4b94-9f27-b21881e131c0"
                       class="rounded img-fluid img-produit-panier"/></span
                   >{{ prod.name }}
                 </h4>

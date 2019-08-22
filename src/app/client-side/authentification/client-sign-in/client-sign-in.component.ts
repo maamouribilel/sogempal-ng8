@@ -1,10 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-
-import { AngularFirestore } from '@angular/fire/firestore';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { Router } from '@angular/router';
 import { ClientAuthService } from '../../services/client-auth.service';
 
 @Component({
@@ -17,6 +12,7 @@ export class ClientSignInComponent implements OnInit {
   signInForm: FormGroup;
 
   constructor(private clientAuthService: ClientAuthService) {
+    this.clientAuthService.checkLogged();
     this.registerForm = new FormGroup({
       signUpName: new FormControl(null, [Validators.required]),
       signUpEmail: new FormControl(null, [
@@ -36,12 +32,10 @@ export class ClientSignInComponent implements OnInit {
   ngOnInit() {}
 
   onSignUp() {
-    console.log(this.registerForm);
     this.clientAuthService.SignUp(this.registerForm);
   }
 
   onSignIn() {
-    console.log(this.signInForm);
     this.clientAuthService.SignIn(this.signInForm);
   }
 }

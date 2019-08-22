@@ -27,11 +27,7 @@ export class ClientAuthService implements OnInit {
           .subscribe(res => {
             this.loggedUser = res;
           });
-        //   localStorage.setItem('user', JSON.stringify(this.loggedUser));
-        //   JSON.parse(localStorage.getItem('user'));
       } else {
-        //   localStorage.setItem('user', null);
-        //   JSON.parse(localStorage.getItem('user'));
         this.router.navigate(['login']);
       }
     });
@@ -49,12 +45,17 @@ export class ClientAuthService implements OnInit {
         .doc(result.user.uid)
         .set({
           name: registerForm.value.signUpName,
-          tel: registerForm.value.signUpTel
+          tel: registerForm.value.signUpTel,
+          role: 'client',
+          block: false
         });
-      this.toastr.success('You have been successfully signed up.', 'Sign Up!');
-      this.router.navigate(['/login']);
+      this.toastr.success('Vous avez été inscrit avec succès.', 'Yayy!');
+      this.router.navigate(['/']);
     } catch (error) {
-      this.toastr.error(error, 'Error!');
+      this.toastr.error(
+        `veuillez vérifier vos saisies s'il vous plait`,
+        'Awww!'
+      );
     }
   }
 
@@ -71,15 +72,34 @@ export class ClientAuthService implements OnInit {
         .subscribe(res => {
           this.loggedUser = res;
         });
-      this.toastr.success('You have been successfully signed in.', 'Sign in!');
+      this.toastr.success('Vous avez été connecté avec succès.', 'Yayy!');
       this.ngZone.run(() => {
         this.router.navigate(['']);
       });
     } catch (error) {
-      this.toastr.error(error, 'Error!');
+      this.toastr.error(
+        `veuillez vérifier vos saisies s'il vous plait`,
+        'Awww!'
+      );
     }
   }
 
+  checkLogged() {
+    this.afAuth.authState.subscribe(user => {
+      if (user) {
+        this.router.navigate(['/']);
+      } else {
+        this.router.navigate(['login']);
+      }
+    });
+  }
+  checkNotLogged() {
+    this.afAuth.authState.subscribe(user => {
+      if (!user) {
+        this.router.navigate(['/']);
+      }
+    });
+  }
   logout() {
     this.afAuth.auth.signOut();
     this.router.navigate(['/login']);

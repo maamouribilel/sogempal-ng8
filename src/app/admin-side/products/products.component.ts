@@ -10,7 +10,6 @@ import { BackDataService } from '../shared/services/back-data.service';
 import { Subscription, Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-products',
@@ -47,7 +46,6 @@ export class ProductsComponent implements OnInit, OnDestroy {
   constructor(
     public authService: AuthService,
     private backDataService: BackDataService,
-    private firestore: AngularFirestore,
     private storage: AngularFireStorage
   ) {
     // check if logged
@@ -113,7 +111,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.productImage = {
       name: file.name
     };
-
+    const currentDate = new Date();
+    const date = currentDate.getDate();
+    const month = currentDate.getMonth();
+    const year = currentDate.getFullYear();
+    const dateString = date + '-' + (month + 1) + '-' + year;
     const newProd: any = {
       hiddenId: this.hiddenId.value,
       name: this.nameInput.value,
@@ -126,7 +128,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       height: this.heightInput.value,
       weight: this.weightInput.value,
       image: this.productImage,
-      addedDate: new Date()
+      addedDate: dateString
       // image
     };
 
@@ -182,8 +184,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         width: this.widthInput.value,
         height: this.heightInput.value,
         weight: this.weightInput.value,
-        image: this.productImage,
-        addedDate: new Date()
+        image: this.productImage
       };
       this.backDataService.updateProduct(newProd);
     } else {
@@ -197,8 +198,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
         length: this.lengthInput.value,
         width: this.widthInput.value,
         height: this.heightInput.value,
-        weight: this.weightInput.value,
-        addedDate: new Date()
+        weight: this.weightInput.value
       };
       this.backDataService.updateProduct(newProd);
     }

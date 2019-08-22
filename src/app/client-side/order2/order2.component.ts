@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { DataService } from '../services/data.service';
+import { ClientAuthService } from '../services/client-auth.service';
 
 @Component({
   selector: 'app-order2',
@@ -27,7 +28,7 @@ export class Order2Component implements OnInit {
     nom: '',
     adresse: '',
     tel: '',
-    date: new Date(),
+    date: '',
     produits: [],
     prixTotal: 0,
     etatCommande: 0
@@ -36,13 +37,16 @@ export class Order2Component implements OnInit {
     private router: Router,
     private afs: AngularFirestore,
     private afAuth: AngularFireAuth,
-    private dataService: DataService
-  ) {}
+    private dataService: DataService,
+    private clientAuthService: ClientAuthService
+  ) {
+    // check if not logged
+    this.clientAuthService.checkNotLogged();
+  }
   // this.myDate = this.datePipe.transform(this.myDate, 'yyyy-MM-dd');
   ngOnInit() {
     if (JSON.parse(localStorage.getItem('paymentInfo')) != null) {
       this.paymentInfo = JSON.parse(localStorage.getItem('paymentInfo'));
-      console.log(this.orderDetails.date);
     }
 
     this.orderList = JSON.parse(localStorage.getItem('orderList'));
@@ -60,14 +64,8 @@ export class Order2Component implements OnInit {
           .subscribe(res => {
             this.nomComplet = res['name'];
             this.tel = res['tel'];
-            console.log(res);
-            // console.log(this.nomComplet);
           });
-        //   localStorage.setItem('user', JSON.stringify(this.loggedUser));
-        //   JSON.parse(localStorage.getItem('user'));
       } else {
-        //   localStorage.setItem('user', null);
-        //   JSON.parse(localStorage.getItem('user'));
         this.router.navigate(['/accueil']);
       }
     });
@@ -79,23 +77,22 @@ export class Order2Component implements OnInit {
     this.paymentInfo.cvvCarte = form.value.cvvCarte;
 
     localStorage.setItem('paymentInfo', JSON.stringify(this.paymentInfo));
-    console.log(JSON.stringify(this.paymentInfo));
-    //  this.router.navigate(['/order2']);
     this.paymentState = 1;
     localStorage.setItem('paymentState', JSON.stringify(this.paymentState));
-    console.log(JSON.stringify(this.paymentState));
-    // this.router.navigate(['/order3']);
     const myDate = new Date();
+    const date = myDate.getDate();
+    const month = myDate.getMonth();
+    const year = myDate.getFullYear();
+    const dateString = date + '-' + (month + 1) + '-' + year;
     this.orderDetails.nom = this.nomComplet;
     this.orderDetails.adresse = this.adress;
     this.orderDetails.tel = this.tel;
-    this.orderDetails.date = myDate;
+    this.orderDetails.date = dateString;
     this.orderDetails.produits = this.orderList;
-    this.orderDetails.prixTotal = this.totalPrice;
+    this.orderDetails.prixTotal = this.totalPrice * 1.13;
     this.orderDetails.etatCommande = this.paymentState;
-    console.log(this.orderDetails);
     localStorage.setItem('orderDetails', JSON.stringify(this.orderDetails));
-    // this.dataService.saveOrder();
+    this.dataService.saveOrder();
     localStorage.removeItem('slProducts');
     this.router.navigate(['/order3']);
   }
