@@ -42,10 +42,19 @@ export class BackDataService {
   // ******************** */ ORDERS *************************//
   // *******************************************************//
   getOrders(): Observable<any[]> {
-    return this.firestore.collection('oders').snapshotChanges();
+    return this.firestore.collection('orders').snapshotChanges();
+  }
+  // updae order
+  updateOrder(order, newOrder) {
+    const id = order.id;
+    console.log(id);
+    console.log(newOrder);
+
+    this.firestore.doc('orders/' + id).update(newOrder);
+    this.toastr.success('La commande a été mise à jour avec success!');
   }
   deleteOrder(orderId: string) {
     this.firestore.doc('orders/' + orderId).delete();
-    this.toastr.success('Le produit à été supprimé avec succès!');
+    this.toastr.success('Le commande à été suppriméz avec succès!');
   }
 }

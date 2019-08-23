@@ -31,7 +31,7 @@ export class Order2Component implements OnInit {
     date: '',
     produits: [],
     prixTotal: 0,
-    etatCommande: 0
+    etatCommande: ''
   };
   constructor(
     private router: Router,
@@ -90,7 +90,7 @@ export class Order2Component implements OnInit {
     this.orderDetails.date = dateString;
     this.orderDetails.produits = this.orderList;
     this.orderDetails.prixTotal = this.totalPrice * 1.13;
-    this.orderDetails.etatCommande = this.paymentState;
+    this.orderDetails.etatCommande = 'En attente';
     localStorage.setItem('orderDetails', JSON.stringify(this.orderDetails));
     this.dataService.saveOrder();
     localStorage.removeItem('slProducts');

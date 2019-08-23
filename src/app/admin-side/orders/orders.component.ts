@@ -3,6 +3,7 @@ import { AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription, Subject } from 'rxjs';
 import { BackDataService } from '../shared/services/back-data.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-orders',
@@ -15,7 +16,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   userData: any;
   orders: any[] = [];
   ordersSubscription: Subscription;
-
+  etatInput = new FormControl();
   constructor(
     public authService: AuthService,
     public router: Router,
@@ -54,13 +55,20 @@ export class OrdersComponent implements OnInit, OnDestroy {
     };
   }
 
-  // delete product
-  onDeleteProd(prodId: string) {
-    if (confirm('Are you sure?')) {
-      this.backDataService.deleteProduct(prodId);
-      this.dtTrigger.next();
+  // delete order
+  onDeleteOrder(orderId: string) {
+    if (confirm('Est-ce que vous êtes sûre?')) {
+      this.backDataService.deleteOrder(orderId);
     }
   }
+  // update product
+  onUpdateOrder(order) {
+    const newOrder: any = {
+      etatCommande: this.etatInput.value
+    };
+    this.backDataService.updateOrder(order, newOrder);
+  }
+  //
   ngOnDestroy(): void {
     this.ordersSubscription.unsubscribe();
   }
