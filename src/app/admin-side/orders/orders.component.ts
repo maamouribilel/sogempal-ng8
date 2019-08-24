@@ -1,9 +1,10 @@
-import { Component, OnInit, NgZone, OnDestroy } from '@angular/core';
+import { Component, OnInit, NgZone, OnDestroy, ViewChild } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { Subscription, Subject } from 'rxjs';
 import { BackDataService } from '../shared/services/back-data.service';
 import { FormControl } from '@angular/forms';
+import { DataTableDirective } from 'angular-datatables';
 
 @Component({
   selector: 'app-orders',
@@ -13,6 +14,8 @@ import { FormControl } from '@angular/forms';
 export class OrdersComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
+  @ViewChild(DataTableDirective, { static: false })
+  dtElement: DataTableDirective;
   userData: any;
   orders: any[] = [];
   ordersSubscription: Subscription;
@@ -29,7 +32,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
     } else {
       console.log('mouch mrigel');
     }
-    // get products
+    // get orders
     this.ordersSubscription = this.backDataService
       .getOrders()
       .subscribe(res => {
@@ -59,17 +62,24 @@ export class OrdersComponent implements OnInit, OnDestroy {
   onDeleteOrder(orderId: string) {
     if (confirm('Est-ce que vous êtes sûre?')) {
       this.backDataService.deleteOrder(orderId);
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        dtInstance.destroy();
+      });
     }
   }
-  // update product
+  // update order
   onUpdateOrder(order) {
     const newOrder: any = {
       etatCommande: this.etatInput.value
     };
     this.backDataService.updateOrder(order, newOrder);
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      dtInstance.destroy();
+    });
   }
   //
   ngOnDestroy(): void {
     this.ordersSubscription.unsubscribe();
+    this.dtTrigger.unsubscribe();
   }
 }

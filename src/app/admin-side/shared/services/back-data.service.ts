@@ -57,4 +57,35 @@ export class BackDataService {
     this.firestore.doc('orders/' + orderId).delete();
     this.toastr.success('Le commande à été suppriméz avec succès!');
   }
+
+  // ******************** */ USERS *************************//
+  // *******************************************************//
+  getUsers(): Observable<any[]> {
+    return this.firestore.collection('users').snapshotChanges();
+  }
+  // updae user
+  updateUser(user, newUser) {
+    const id = user.id;
+    console.log(id);
+    console.log(newUser);
+    // this.checkBlock(id, newUser);
+    this.firestore.doc('users/' + id).update(newUser);
+    this.toastr.success(`l'opération a bien ete effectuée!`);
+  }
+  /*
+  checkBlock(id, newUser) {
+    this.firestore
+      .doc('users/' + id)
+      .valueChanges()
+      .subscribe(res => {
+        if (res['block'] === newUser.block) {
+          this.toastr.error(
+            `Veuillez changer l'état de l'utilisateur d'abord!`
+          );
+        } else {
+          return false;
+        }
+      });
+  }
+  */
 }

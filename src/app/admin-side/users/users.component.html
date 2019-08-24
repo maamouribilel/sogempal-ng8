@@ -196,11 +196,79 @@
       <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          <h1 class="h3 mb-0 text-gray-800">Utilisateurs</h1>
         </div>
 
         <!-- Content Row -->
-        <div class="row"></div>
+        <div class="row">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table
+                class="table table-hover"
+                width="100%"
+                cellspacing="0"
+                datatable
+                [dtOptions]="dtOptions"
+                [dtTrigger]="dtTrigger"
+                id="usersData"
+              >
+                <thead>
+                  <tr>
+                    <th>Nom complet</th>
+                    <th>Numéro tel</th>
+                    <th>Type</th>
+                    <th>Date d'inscription</th>
+                    <th>Etat</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Nom complet</th>
+                    <th>Numéro tel</th>
+                    <th>Type</th>
+                    <th>Date d'inscription</th>
+                    <th>Etat</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <tr *ngFor="let user of users; let i = index">
+                    <td>
+                      {{ user.name | uppercase }}
+                    </td>
+                    <td>{{ user.tel }}</td>
+                    <td>{{ user.role | uppercase }}</td>
+                    <td>{{ user.inscriptionDate }}</td>
+                    <td>
+                      <div class="form-group row">
+                        <div class="col-lg-8 col-md-8">
+                          <select
+                            class="form-control"
+                            name="etat"
+                            [formControl]="etatInput"
+                            required
+                            value="{{ user.block }}"
+                          >
+                            <option value="true">Bloqué</option>
+                            <option value="false">Actif</option>
+                          </select>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                          <button
+                            type="button"
+                            class="btn my-btn btn-sm"
+                            (click)="onUpdateUser(user)"
+                          >
+                            Changer
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
         <!-- Content Row -->
 

@@ -10,6 +10,7 @@ import { BackDataService } from '../shared/services/back-data.service';
 import { Subscription, Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { DataTableDirective } from 'angular-datatables';
 
 @Component({
   selector: 'app-products',
@@ -19,6 +20,8 @@ import { AngularFireStorage } from '@angular/fire/storage';
 export class ProductsComponent implements OnInit, OnDestroy {
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<any> = new Subject();
+  @ViewChild(DataTableDirective, { static: false })
+  dtElement: DataTableDirective;
   userData: any;
   products: any[] = [];
   productsSubscription: Subscription;
@@ -83,11 +86,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.productsSubscription.unsubscribe();
+    this.dtTrigger.unsubscribe();
   }
 
   onFileSelected(event) {
     this.selectedFile = event.target.files[0];
-    console.log(event);
   }
   // onAddtrigger
   onAddTrigger() {
@@ -133,6 +136,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
     };
 
     this.backDataService.addProduct(newProd);
+    // reset datatable
+    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+      dtInstance.destroy();
+      this.dtTrigger.next();
+    });
 
     this.hiddenId.setValue('');
     this.nameInput.setValue('');
@@ -187,6 +195,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
         image: this.productImage
       };
       this.backDataService.updateProduct(newProd);
+      // reset datatable
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        dtInstance.destroy();
+        //   this.dtTrigger.next();
+      });
     } else {
       const newProd: any = {
         hiddenId: this.hiddenId.value,
@@ -201,6 +214,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
         weight: this.weightInput.value
       };
       this.backDataService.updateProduct(newProd);
+      // reset datatable
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        dtInstance.destroy();
+        //     this.dtTrigger.next();
+      });
     }
   }
 
@@ -208,7 +226,11 @@ export class ProductsComponent implements OnInit, OnDestroy {
   onDeleteProd(prodId: string) {
     if (confirm('Are you sure?')) {
       this.backDataService.deleteProduct(prodId);
-      this.dtTrigger.next();
+      // reset datatable
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        dtInstance.destroy();
+        this.dtTrigger.next();
+      });
     }
   }
 }

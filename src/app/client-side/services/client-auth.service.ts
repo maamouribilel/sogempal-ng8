@@ -40,6 +40,11 @@ export class ClientAuthService implements OnInit {
         registerForm.value.signUpEmail,
         registerForm.value.signUpPassword
       );
+      const myDate = new Date();
+      const date = myDate.getDate();
+      const month = myDate.getMonth();
+      const year = myDate.getFullYear();
+      const dateString = date + '-' + (month + 1) + '-' + year;
       this.afs
         .collection('users')
         .doc(result.user.uid)
@@ -47,7 +52,8 @@ export class ClientAuthService implements OnInit {
           name: registerForm.value.signUpName,
           tel: registerForm.value.signUpTel,
           role: 'client',
-          block: false
+          block: false,
+          inscriptionDate: dateString
         });
       this.toastr.success('Vous avez été inscrit avec succès.', 'Yayy!');
       this.router.navigate(['/']);
