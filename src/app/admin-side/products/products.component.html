@@ -92,111 +92,14 @@
     <!-- Main Content -->
     <div id="content">
       <!-- Topbar -->
-      <nav
-        class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-      >
-        <!-- Topbar Navbar -->
-        <ul class="navbar-nav ml-auto">
-          <!-- Nav Item - Messages -->
-          <li class="nav-item dropdown no-arrow mx-1">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="messagesDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i class="fas fa-envelope fa-fw"></i>
-              <!-- Counter - Messages -->
-              <span class="badge badge-danger badge-counter">1</span>
-            </a>
-            <!-- Dropdown - Messages -->
-            <div
-              class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-              aria-labelledby="messagesDropdown"
-            >
-              <h6 class="dropdown-header">
-                Message Center
-              </h6>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <div class="dropdown-list-image mr-3">
-                  <img
-                    class="rounded-circle"
-                    src="https://source.unsplash.com/fn_BT9fwg_E/60x60"
-                    alt=""
-                  />
-                  <div class="status-indicator bg-success"></div>
-                </div>
-                <div class="font-weight-bold">
-                  <div class="text-truncate">
-                    Hi there! I am wondering if you can help me with a problem
-                    I've been having.
-                  </div>
-                  <div class="small text-gray-500">Emily Fowler · 58m</div>
-                </div>
-              </a>
-
-              <a class="dropdown-item text-center small text-gray-500" href="#"
-                >Read More Messages</a
-              >
-            </div>
-          </li>
-
-          <div class="topbar-divider d-none d-sm-block"></div>
-
-          <!-- Nav Item - User Information -->
-          <li class="nav-item dropdown no-arrow" *ngIf="userData !== null">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="userDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{
-                userData.displayName
-              }}</span>
-              <img
-                class="img-profile rounded-circle"
-                [src]="userData.photoURL"
-              />
-            </a>
-            <!-- Dropdown - User Information -->
-            <div
-              class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-              aria-labelledby="userDropdown"
-            >
-              <a class="dropdown-item" href="#">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profile
-              </a>
-              <div class="dropdown-divider"></div>
-              <a
-                class="dropdown-item"
-                href="#"
-                data-toggle="modal"
-                data-target="#logoutModal"
-              >
-                <i
-                  class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
-                ></i>
-                Logout
-              </a>
-            </div>
-          </li>
-        </ul>
-      </nav>
+      <app-dash-header></app-dash-header>
       <!-- End of Topbar -->
 
       <!-- Begin Page Content -->
       <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Produits</h1>
+          <h1 class="h3 mb-0 text-gray-800">PRODUITS</h1>
           <button
             class="btn my-btn-primary  btn-sm shadow-sm"
             data-toggle="modal"
@@ -212,7 +115,7 @@
           <div class="card-body">
             <div class="table-responsive">
               <table
-                class="table table-hover"
+                class="table table-hover table-borderless"
                 width="100%"
                 cellspacing="0"
                 datatable
@@ -220,7 +123,7 @@
                 [dtTrigger]="dtTrigger"
                 id="example"
               >
-                <thead>
+                <thead class="thead-dark">
                   <tr>
                     <th style="width:150px;">Image</th>
                     <th style="width:150px;">Produit</th>
@@ -232,26 +135,24 @@
                     <th style="width:150px;">Actions</th>
                   </tr>
                 </thead>
-                <tfoot>
-                  <tr>
-                    <th>Produit</th>
-                    <th>Description</th>
-                    <th>Prix</th>
-                    <th>Quantité</th>
-                    <th>Date d'ajout</th>
-                    <th>Actions</th>
-                  </tr>
-                </tfoot>
+
                 <tbody>
                   <tr *ngFor="let prod of products; let i = index">
                     <td>
-                      <img
-                        height="75px;"
-                        src="https://firebasestorage.googleapis.com/v0/b/sogempal-33bb7.appspot.com/o/img%2F{{
-                          prod.image.name
-                        }}?alt=media&token=8d725787-23d4-4b94-9f27-b21881e131c0"
-                        alt="{{ prod.name }}"
-                      />
+                      <a
+                        href="#"
+                        data-toggle="modal"
+                        [attr.data-target]="'#imgModal' + i"
+                      >
+                        <img
+                          id="img-back"
+                          height="75px;"
+                          src="https://firebasestorage.googleapis.com/v0/b/sogempal-33bb7.appspot.com/o/img%2F{{
+                            prod.image.name
+                          }}?alt=media&token=8d725787-23d4-4b94-9f27-b21881e131c0"
+                          alt="{{ prod.name }}"
+                        />
+                      </a>
                     </td>
                     <td>{{ prod.name }}</td>
                     <td>{{ prod.category }}</td>
@@ -525,6 +426,45 @@
             Mettre à jour
           </button>
         </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Images modal-->
+
+<!-- Logout Modal-->
+<div
+  *ngFor="let prod of products; let i = index"
+  class="modal fade"
+  [id]="'imgModal' + i"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+  style="overflow-y: scroll;"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>{{ prod.name }}</h3>
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <img
+          src="https://firebasestorage.googleapis.com/v0/b/sogempal-33bb7.appspot.com/o/img%2F{{
+            prod.image.name
+          }}?alt=media&token=8d725787-23d4-4b94-9f27-b21881e131c0"
+          alt="{{ prod.name }}"
+          class="img-fluid"
+        />
       </div>
     </div>
   </div>

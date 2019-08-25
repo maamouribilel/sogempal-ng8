@@ -11,6 +11,8 @@ import { OrdersComponent } from 'src/app/admin-side/orders/orders.component';
 import { UsersComponent } from 'src/app/admin-side/users/users.component';
 import { ContactsComponent } from 'src/app/admin-side/contacts/contacts.component';
 import { DataTablesModule } from 'angular-datatables';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { DashHeaderComponent } from 'src/app/admin-side/dash-header/dash-header.component';
 
 @NgModule({
   declarations: [
@@ -20,14 +22,16 @@ import { DataTablesModule } from 'angular-datatables';
     ProductsComponent,
     OrdersComponent,
     UsersComponent,
-    ContactsComponent
+    ContactsComponent,
+    DashHeaderComponent
   ],
   imports: [
     CommonModule,
     DashboardRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    DataTablesModule
+    DataTablesModule,
+    AngularEditorModule
   ]
 })
 export class LazyDashboardModule {}

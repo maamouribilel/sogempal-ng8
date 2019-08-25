@@ -66,26 +66,30 @@ export class BackDataService {
   // updae user
   updateUser(user, newUser) {
     const id = user.id;
-    console.log(id);
-    console.log(newUser);
-    // this.checkBlock(id, newUser);
     this.firestore.doc('users/' + id).update(newUser);
     this.toastr.success(`l'opération a bien ete effectuée!`);
   }
-  /*
-  checkBlock(id, newUser) {
-    this.firestore
-      .doc('users/' + id)
-      .valueChanges()
-      .subscribe(res => {
-        if (res['block'] === newUser.block) {
-          this.toastr.error(
-            `Veuillez changer l'état de l'utilisateur d'abord!`
-          );
-        } else {
-          return false;
-        }
-      });
+
+  getBlock(user) {
+    return this.firestore.doc('users/' + user.id).valueChanges();
   }
-  */
+
+  // ******************** */ CONTACTS *************************//
+  // *******************************************************//
+
+  getContacts(): Observable<any[]> {
+    return this.firestore.collection('contacts').snapshotChanges();
+  }
+
+  updateContact(contact, newContact) {
+    const id = contact.id;
+    this.firestore.doc('contacts/' + id).update(newContact);
+  }
+
+  // *********************** ********************************/
+  getUnreadMsgs(): Observable<any[]> {
+    return this.firestore
+      .collection('contacts', ref => ref.where('msgState', '==', 'unread'))
+      .snapshotChanges();
+  }
 }

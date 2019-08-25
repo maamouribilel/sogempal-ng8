@@ -35,6 +35,7 @@ export class UsersComponent implements OnInit, OnDestroy {
       console.log('mouch mrigel');
     }
     // get users
+
     this.usersSubscription = this.backDataService.getUsers().subscribe(res => {
       this.users = res.map(item => {
         return {
@@ -57,25 +58,24 @@ export class UsersComponent implements OnInit, OnDestroy {
     };
   }
 
-  /*
-  onDeleteUser(userId: string) {
-    if (confirm('Est-ce que vous êtes sûre?')) {
-      this.backDataService.delete(userId);
-    }
-  }
-  */
-
   // update User
   onUpdateUser(user) {
-    if (this.etatInput.value !== null) {
+    let etatUser;
+    this.backDataService.getBlock(user).subscribe(etat => {
+      etatUser = etat['block'];
+    });
+
+    if (
+      this.etatInput.value != null &&
+      this.etatInput.value != '' &&
+      etatUser != this.etatInput.value
+    ) {
       const newUser: any = {
         block: this.etatInput.value
       };
-
       this.backDataService.updateUser(user, newUser);
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
         dtInstance.destroy();
-        // this.dtTrigger.next();
       });
     } else {
       this.toastr.error(`Veuillez changer l'état de l'utilisateur d'abord!`);

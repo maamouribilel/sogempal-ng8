@@ -92,118 +92,61 @@
     <!-- Main Content -->
     <div id="content">
       <!-- Topbar -->
-      <nav
-        class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
-      >
-        <!-- Topbar Navbar -->
-        <ul class="navbar-nav ml-auto">
-          <!-- Nav Item - Messages -->
-          <li class="nav-item dropdown no-arrow mx-1">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="messagesDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i class="fas fa-envelope fa-fw"></i>
-              <!-- Counter - Messages -->
-              <span class="badge badge-danger badge-counter">1</span>
-            </a>
-            <!-- Dropdown - Messages -->
-            <div
-              class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-              aria-labelledby="messagesDropdown"
-            >
-              <h6 class="dropdown-header">
-                Message Center
-              </h6>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <div class="dropdown-list-image mr-3">
-                  <img
-                    class="rounded-circle"
-                    src="https://source.unsplash.com/fn_BT9fwg_E/60x60"
-                    alt=""
-                  />
-                  <div class="status-indicator bg-success"></div>
-                </div>
-                <div class="font-weight-bold">
-                  <div class="text-truncate">
-                    Hi there! I am wondering if you can help me with a problem
-                    I've been having.
-                  </div>
-                  <div class="small text-gray-500">Emily Fowler · 58m</div>
-                </div>
-              </a>
-
-              <a class="dropdown-item text-center small text-gray-500" href="#"
-                >Read More Messages</a
-              >
-            </div>
-          </li>
-
-          <div class="topbar-divider d-none d-sm-block"></div>
-
-          <!-- Nav Item - User Information -->
-          <li class="nav-item dropdown no-arrow" *ngIf="userData !== null">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="userDropdown"
-              role="button"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{
-                userData.displayName
-              }}</span>
-              <img
-                class="img-profile rounded-circle"
-                [src]="userData.photoURL"
-              />
-            </a>
-            <!-- Dropdown - User Information -->
-            <div
-              class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-              aria-labelledby="userDropdown"
-            >
-              <a class="dropdown-item" href="#">
-                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                Profile
-              </a>
-              <div class="dropdown-divider"></div>
-              <a
-                class="dropdown-item"
-                href="#"
-                data-toggle="modal"
-                data-target="#logoutModal"
-              >
-                <i
-                  class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
-                ></i>
-                Logout
-              </a>
-            </div>
-          </li>
-        </ul>
-      </nav>
+      <app-dash-header></app-dash-header>
       <!-- End of Topbar -->
 
       <!-- Begin Page Content -->
       <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-          <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+          <h1 class="h3 mb-0 text-gray-800">CONTACTS</h1>
         </div>
 
         <!-- Content Row -->
-        <div class="row"></div>
+        <div class="row">
+          <div class="card-body">
+            <div class="table-responsive">
+              <table
+                class="table table-hover table-borderless"
+                width="100%"
+                cellspacing="0"
+                datatable
+                [dtOptions]="dtOptions"
+                [dtTrigger]="dtTrigger"
+                id="contactsData"
+              >
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Nom complet</th>
+                    <th>Email</th>
+                    <th>Sujet</th>
+                    <th>Date</th>
+                  </tr>
+                </thead>
+
+                <tbody class="table-striped">
+                  <tr
+                    *ngFor="let contact of contacts; let i = index"
+                    [class]="contact.msgState === 'read' ? 'table-dark' : ''"
+                    style="cursor: pointer;"
+                    data-toggle="modal"
+                    [attr.data-target]="'#contactModal' + i"
+                    (click)="onUpdateState(contact)"
+                  >
+                    <td>
+                      {{ contact.name | uppercase }}
+                    </td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.subject }}</td>
+                    <td>{{ contact.sentDate }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
 
         <!-- Content Row -->
-
         <div class="row"></div>
 
         <!-- Content Row -->
@@ -264,6 +207,73 @@
         </button>
         <button class="btn my-btn" (click)="authService.SignOut()">
           Déconnexion
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Contacts Modal-->
+<div
+  *ngFor="let contact of contacts; let i = index"
+  class="modal fade"
+  [id]="'contactModal' + i"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="orderModal"
+  aria-hidden="true"
+  style="overflow-y: scroll;"
+>
+  <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Prêt à partir?</h5>
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-8 col-md-8">
+            <h4>
+              Envoyé par : <strong>{{ contact.name }}</strong>
+            </h4>
+            <h4>
+              Adresse e-mail : <strong>{{ contact.email }}</strong>
+            </h4>
+            <h4>
+              Le Sujet : <strong>{{ contact.subject }}</strong>
+            </h4>
+          </div>
+          <div class="col-lg-4 col-md-4">
+            <h4>
+              Reçu le : <strong>{{ contact.sentDate }}</strong>
+            </h4>
+          </div>
+        </div>
+        <hr />
+
+        <div style="margin:25px;">
+          <label>Contenu : </label>
+          <p style="font-size: 18px;">{{ contact.msgContent }}</p>
+        </div>
+        <br />
+        <angular-editor
+          [placeholder]="'Enter text here...'"
+          [(ngModel)]="htmlMsgContent"
+        ></angular-editor>
+        <div class="html">
+          {{ htmlMsgContent }}
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn my-btn">
+          <i class="fas fa-reply"> </i> Répondre
         </button>
       </div>
     </div>

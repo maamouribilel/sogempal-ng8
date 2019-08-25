@@ -19,7 +19,7 @@ import { NotFoundComponent } from './shared/components/not-found/not-found.compo
 import { ClientSignInComponent } from './client-side/authentification/client-sign-in/client-sign-in.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { PanierComponent } from './client-side/panier/panier.component';
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 // Firebase modules
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
@@ -68,6 +68,7 @@ import { AddProductComponent } from './admin-side/products/add-product/add-produ
     FormsModule,
     ReactiveFormsModule,
     NgbModule,
+    AngularEditorModule,
     ToastrModule.forRoot(),
     // include firebase config & modules
     AngularFireModule.initializeApp(environment.firebaseConfig),
