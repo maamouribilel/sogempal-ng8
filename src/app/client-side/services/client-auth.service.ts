@@ -77,11 +77,16 @@ export class ClientAuthService implements OnInit {
         .valueChanges()
         .subscribe(res => {
           this.loggedUser = res;
+          if (this.loggedUser.block == 'true') {
+            this.toastr.error(`Désolé votre compte a été bloqué! `);
+            this.afAuth.auth.signOut();
+          } else {
+            this.toastr.success('Vous avez été connecté avec succès.', 'Yayy!');
+            this.ngZone.run(() => {
+              this.router.navigate(['']);
+            });
+          }
         });
-      this.toastr.success('Vous avez été connecté avec succès.', 'Yayy!');
-      this.ngZone.run(() => {
-        this.router.navigate(['']);
-      });
     } catch (error) {
       this.toastr.error(
         `veuillez vérifier vos saisies s'il vous plait`,
@@ -109,5 +114,8 @@ export class ClientAuthService implements OnInit {
   logout() {
     this.afAuth.auth.signOut();
     this.router.navigate(['/login']);
+  }
+  getUser() {
+    return this.loggedUser;
   }
 }

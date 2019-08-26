@@ -28,15 +28,13 @@ export class OrdersComponent implements OnInit, OnDestroy {
   ) {
     if (this.authService.isAdmin() && this.authService.isLoggedIn()) {
       this.userData = JSON.parse(localStorage.getItem('userData'));
-      console.log('mrigel');
     } else {
-      console.log('mouch mrigel');
+      this.router.navigate(['/admin']);
     }
     // get orders
     this.ordersSubscription = this.backDataService
       .getOrders()
       .subscribe(res => {
-        console.log(res);
         this.orders = res.map(item => {
           return {
             id: item.payload.doc.id,

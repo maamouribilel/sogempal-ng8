@@ -23,9 +23,8 @@ export class DashHeaderComponent implements OnInit, OnDestroy {
   ) {
     if (this.authService.isAdmin() && this.authService.isLoggedIn()) {
       this.userData = JSON.parse(localStorage.getItem('userData'));
-      console.log('mrigel');
     } else {
-      console.log('mouch mrigel');
+      this.router.navigate(['/admin']);
     }
     // unread msgs
     this.unreadMsgsSubscription = this.backDataService

@@ -62,11 +62,11 @@
               class="dropdown-menu"
               x-placement="bottom-start"
             >
-              <a class="dropdown-item" routerLink="/login">
+              <a class="dropdown-item" routerLink="/mon-compte">
                 <i style="color: #C08E58;" class="fas fa-user"> </i>&nbsp; mon
                 compte</a
               >
-              <a class="dropdown-item" routerLink="/login">
+              <a class="dropdown-item" routerLink="/mes-commandes">
                 <i style="color: #C08E58;" class="fas fa-clipboard-list"> </i>
                 &nbsp; commandes</a
               >
@@ -215,12 +215,12 @@
             <!--Logged-->
             <ng-container *ngIf="afAuth.user | async as user; else showLogin2">
               <li class="nav-item 	d-block d-sm-none">
-                <a class="nav-link" routerLink="/login"
+                <a class="nav-link" routerLink="/mon-compte"
                   ><i class="fas fa-user"></i>&nbsp; Mon compte</a
                 >
               </li>
               <li class="nav-item 	d-block d-sm-none">
-                <a class="nav-link" routerLink="/login"
+                <a class="nav-link" routerLink="/mes-commandes"
                   ><i class="fas fa-clipboard-list"></i>&nbsp; Mes commandes</a
                 >
               </li>

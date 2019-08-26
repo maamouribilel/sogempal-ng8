@@ -117,7 +117,7 @@
               >
                 <thead class="thead-dark">
                   <tr>
-                    <th>Ref</th>
+                    <th style="width: 150px;">Ref</th>
                     <th>Client</th>
                     <th>Prix Total</th>
                     <th>Date d'ajout</th>
@@ -134,7 +134,8 @@
                         data-toggle="modal"
                         [attr.data-target]="'#orderModaln' + i"
                       >
-                        {{ order.id + ' ' }} <i class="fas fa-eye"></i
+                        {{ order.id | slice: 0:12 + ' ' }}
+                        <i class="fas fa-eye"></i
                       ></a>
                     </td>
                     <td>{{ order.nom }}</td>

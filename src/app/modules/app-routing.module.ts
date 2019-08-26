@@ -12,6 +12,8 @@ import { PanierComponent } from '../client-side/panier/panier.component';
 import { OrderComponent } from '../client-side/order/order.component';
 import { Order2Component } from '../client-side/order2/order2.component';
 import { Order3Component } from '../client-side/order3/order3.component';
+import { MyAccountComponent } from '../client-side/my-account/my-account.component';
+import { MyOrdersComponent } from '../client-side/my-orders/my-orders.component';
 
 // admin
 /*
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'palettes', component: PalettesComponent },
   { path: 'caisses', component: CaissesComponent },
   { path: 'panier', component: PanierComponent },
+  { path: 'mon-compte', component: MyAccountComponent },
+  { path: 'mes-commandes', component: MyOrdersComponent },
   { path: 'order', component: OrderComponent },
   { path: 'order2', component: Order2Component },
   { path: 'order3', component: Order3Component },

@@ -28,20 +28,21 @@
         </h6>
         <ng-container *ngFor="let msgg of msgs | slice: 0:4; let i = index">
           <a
-            class="dropdown-item d-flex align-items-center"
+            class="dropdown-item d-flex align-items-center "
             href="#"
             data-toggle="modal"
             [attr.data-target]="'#msgModal' + i"
             (click)="onUpdateState(msgg)"
+            [style.background]="msgg.msgState === 'read' ? '#e0e0e0' : '#fff'"
           >
-            <div class="dropdown-list-image mr-3">
+            <div class="dropdown-list-image mr-3 ">
               <img
                 class="rounded-circle"
                 src="../../../assets/img/user-icon.jpg"
                 style="width: 45px;height:45px;"
                 alt=""
               />
-              <div class="status-indicator bg-success"></div>
+              <!-- <div class="status-indicator bg-success"></div> -->
             </div>
             <div class="font-weight-bold">
               <div class="text-truncate">

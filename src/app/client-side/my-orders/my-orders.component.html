@@ -1,0 +1,196 @@
+<app-header></app-header>
+<br />
+<div class="container" style="margin-top:160px; min-height: 350px;">
+  <p id="breadcrumb">
+    <a [routerLink]="['/accueil']"><i class="fas fa-home"></i> Accueil</a>
+    Mes commandes
+  </p>
+  <section>
+    <h5 class="text-center">Historique des commandes</h5>
+    <br />
+
+    <table class="table table-striped table-bordered ">
+      <thead class="thead-default">
+        <tr>
+          <th>Référence de commande</th>
+          <th>Date</th>
+          <th>Prix total</th>
+          <th>Actif</th>
+          <th>Facture</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders; let i = index">
+          <th scope="row">{{ order.id }}</th>
+          <td>{{ order.date }}</td>
+          <td>{{ order.prixTotal | number: '1.2' }} TND</td>
+
+          <td>
+            {{ order.etatCommande }}
+          </td>
+
+          <td class="text-xs-center order-actions">
+            <a
+              href="#"
+              data-toggle="modal"
+              [attr.data-target]="'#orderModaln' + i"
+            >
+              Details
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>
+<app-footer></app-footer>
+
+<!--order model-->
+
+<!-- order Modal-->
+<div
+  *ngFor="let order of orders; let i = index"
+  class="modal fade"
+  [id]="'orderModaln' + i"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="orderModal"
+  aria-hidden="true"
+  style="overflow-y: scroll;"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="orderModal">
+          Details de la commande
+        </h5>
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div #invoice class="container" id="invoice">
+          <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body p-0">
+                  <div class="row p-5">
+                    <div class="col-md-6 col-xs-12 ">
+                      <img
+                        class="img img-fluid"
+                        src="../../../assets/img/logo-sogempal-final.png"
+                      />
+                    </div>
+
+                    <div class="col-md-6 col-xs-12 text-right">
+                      <p class="font-weight-bold mb-1"></p>
+                      <p class="text-muted">Date: {{ order.date }}</p>
+                    </div>
+                  </div>
+
+                  <hr class="my-5" />
+
+                  <div class="row pb-5 p-5">
+                    <div class="col-md-6 col-xs-12 ">
+                      <p class="font-weight-bold mb-4">Information client</p>
+                      <p class="mb-1">{{ order.nom | uppercase }}</p>
+                      <p class="mb-1">{{ order.tel }}</p>
+                      <p>{{ order.adresse.adresse }}</p>
+                      <p class="mb-1">{{ order.adresse.ville }}</p>
+                      <p class="mb-1">{{ order.adresse.postal }}</p>
+                    </div>
+
+                    <div class="col-md-6 text-right col-xs-12 ">
+                      <p class="font-weight-bold mb-4">Details de paiement</p>
+                      <p class="mb-1">
+                        <span class="text-muted">Etat : </span> PAYE
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="row p-5">
+                    <div class="col-md-12 col-xs-12 ">
+                      <table class="table">
+                        <thead>
+                          <tr>
+                            <th
+                              class="border-0 text-uppercase small font-weight-bold"
+                            >
+                              Produit
+                            </th>
+                            <th
+                              class="border-0 text-uppercase small font-weight-bold"
+                            >
+                              Description
+                            </th>
+                            <th
+                              class="border-0 text-uppercase small font-weight-bold"
+                            >
+                              Quantité
+                            </th>
+                            <th
+                              class="border-0 text-uppercase small font-weight-bold"
+                            >
+                              Prix Unitaire
+                            </th>
+                            <th
+                              class="border-0 text-uppercase small font-weight-bold"
+                            >
+                              Total par produit
+                            </th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let prod of order.produits">
+                            <td>{{ prod.name }}</td>
+                            <td>{{ prod.description }}</td>
+                            <td>{{ prod.quantity }}</td>
+                            <td>{{ prod.price | number: '1.2' }}TND</td>
+                            <td>
+                              {{
+                                prod.price * prod.quantity | number: '1.2'
+                              }}TND
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+                  <div
+                    class="d-flex flex-row-reverse bg-dark text-white p-4 col-xs-12 "
+                  >
+                    <div class="py-3 px-5 text-right">
+                      <div class="mb-2">Prix Total</div>
+                      <div class="h2 font-weight-light">
+                        {{ order.prixTotal | number: '1.2' }}TND
+                      </div>
+                    </div>
+
+                    <div class="py-3 px-5 text-right col-xs-12 ">
+                      <div class="mb-2">Taxe</div>
+                      <div class="h2 font-weight-light">13%</div>
+                    </div>
+
+                    <div class="py-3 px-5 text-right col-xs-12 ">
+                      <div class="mb-2">Prix total Hors-taxe</div>
+                      <div class="h2 font-weight-light">
+                        {{ order.prixTotal / 1.13 | number: '1.2' }} TND
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>

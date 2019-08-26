@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
 // import { Product } from './product';
 
 @Injectable()
@@ -10,7 +10,10 @@ export class DataService {
   products: any[] = [];
   slProducts: any[] = [];
 
-  constructor(private http: HttpClient, private firestore: AngularFirestore) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private toastr: ToastrService
+  ) {}
 
   // products data
   getProducts(): Observable<any[]> {
@@ -51,8 +54,10 @@ export class DataService {
       prod.quantity = 1;
       this.slProducts.push(prod);
       localStorage.setItem('slProducts', JSON.stringify(this.slProducts));
+      this.toastr.success('Produit ajouté!');
     } else {
       this.slProducts[res].quantity += 1;
+      this.toastr.success('Produit ajouté!');
       localStorage.setItem('slProducts', JSON.stringify(this.slProducts));
     }
   }
@@ -66,4 +71,19 @@ export class DataService {
     const order = JSON.parse(localStorage.getItem('orderDetails'));
     this.firestore.collection('orders').add(order);
   }
+
+  /********************************************** update user */
+  updateUserInfo(user, newUser) {
+    this.firestore.doc('users/' + user.id).update(newUser);
+    this.toastr.success('Vos informations ont été mises à jour');
+  }
+
+  /*************************************************my orders */
+  /*
+  getOrders(telNumber): Observable<any[]> {
+    return this.firestore
+      .collection('orders', ref => ref.where('tel', '==', telNumber))
+      .snapshotChanges();
+  }
+  */
 }

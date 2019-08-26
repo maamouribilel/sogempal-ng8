@@ -78,7 +78,9 @@ export class BackDataService {
   // *******************************************************//
 
   getContacts(): Observable<any[]> {
-    return this.firestore.collection('contacts').snapshotChanges();
+    return this.firestore
+      .collection('contacts', ref => ref.orderBy('sentDate', 'desc'))
+      .snapshotChanges();
   }
 
   updateContact(contact, newContact) {

@@ -6,7 +6,6 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { isUndefined } from 'util';
 
 @Component({
   selector: 'app-sign-in',
@@ -24,6 +23,9 @@ export class SignInComponent implements OnInit {
     private toastr: ToastrService
   ) {
     // NgZone service to remove outside scope warning) {}
+    if (this.authService.isAdmin() && this.authService.isLoggedIn()) {
+      this.router.navigate(['/admin/dashboard']);
+    }
   }
   ngOnInit() {}
 

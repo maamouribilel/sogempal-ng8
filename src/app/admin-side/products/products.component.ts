@@ -11,6 +11,7 @@ import { Subscription, Subject } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { DataTableDirective } from 'angular-datatables';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -49,14 +50,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
   constructor(
     public authService: AuthService,
     private backDataService: BackDataService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private router: Router
   ) {
     // check if logged
     if (this.authService.isAdmin() && this.authService.isLoggedIn()) {
       this.userData = JSON.parse(localStorage.getItem('userData'));
-      console.log('mrigel');
     } else {
-      console.log('mouch mrigel');
+      this.router.navigate(['/admin']);
     }
     // get products
     this.productsSubscription = this.backDataService

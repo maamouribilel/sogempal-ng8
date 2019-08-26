@@ -1,3 +1,25 @@
+.note {
+  text-align: center;
+  height: 80px;
+  background: -webkit-linear-gradient(left, #05582d, rgb(8, 114, 59));
+  color: #fff;
+  font-weight: bold;
+  line-height: 80px;
+}
+.form-content {
+  padding: 5%;
+  border: 1px solid #ced4da;
+  margin-bottom: 2%;
+}
+
+.btnSubmit {
+  background: #c08e58;
+  color: #fff;
+}
+.btnSubmit:hover {
+  background: rgb(173, 120, 63);
+  color: #fff;
+}
 input[type='text']:focus:not([readonly]) + label {
   color: #c08e58;
 }
@@ -29,13 +51,4 @@ input[type='password']:focus:not([readonly]) + label {
 input[type='password']:focus:not([readonly]) {
   border-bottom: 1px solid #c08e58;
   box-shadow: 0 1px 0 0 #c08e58;
-}
-
-.sign-in-btn {
-  background-color: #c08e58;
-  color: #fff;
-}
-.sign-in-btn:hover {
-  background-color: #957755;
-  color: #fff;
 }

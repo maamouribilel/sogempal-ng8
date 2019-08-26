@@ -28,12 +28,6 @@ export class UsersComponent implements OnInit, OnDestroy {
     private backDataService: BackDataService,
     private toastr: ToastrService
   ) {
-    if (this.authService.isAdmin() && this.authService.isLoggedIn()) {
-      this.userData = JSON.parse(localStorage.getItem('userData'));
-      console.log('mrigel');
-    } else {
-      console.log('mouch mrigel');
-    }
     // get users
 
     this.usersSubscription = this.backDataService.getUsers().subscribe(res => {
