@@ -26,11 +26,13 @@ export class OrdersComponent implements OnInit, OnDestroy {
     public ngZone: NgZone,
     private backDataService: BackDataService
   ) {
+    /*
     if (this.authService.isAdmin() && this.authService.isLoggedIn()) {
       this.userData = JSON.parse(localStorage.getItem('userData'));
     } else {
       this.router.navigate(['/admin']);
     }
+    */
     // get orders
     this.ordersSubscription = this.backDataService
       .getOrders()

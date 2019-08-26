@@ -14,12 +14,15 @@ export class DashboardComponent implements OnInit {
     public router: Router,
     public ngZone: NgZone
   ) {
+    /*
     if (this.authService.isAdmin() && this.authService.isLoggedIn()) {
       this.userData = JSON.parse(localStorage.getItem('userData'));
     } else {
       this.router.navigate(['/admin']);
     }
+    */
   }
+
 
   ngOnInit() {}
 }

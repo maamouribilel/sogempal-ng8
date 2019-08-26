@@ -53,12 +53,13 @@ export class ProductsComponent implements OnInit, OnDestroy {
     private storage: AngularFireStorage,
     private router: Router
   ) {
-    // check if logged
+    /*
     if (this.authService.isAdmin() && this.authService.isLoggedIn()) {
       this.userData = JSON.parse(localStorage.getItem('userData'));
     } else {
       this.router.navigate(['/admin']);
     }
+    */
     // get products
     this.productsSubscription = this.backDataService
       .getProducts()
