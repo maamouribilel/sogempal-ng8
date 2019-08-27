@@ -5,8 +5,192 @@
     <a [routerLink]="['/accueil']"><i class="fas fa-home"></i> Accueil</a>
     Contact
   </p>
-  <p>
-    contact works!
-  </p>
+  <br />
+  <div class="container">
+    <div class="row">
+      <hr />
+      <div class="col-sm-12 col-md-12 col-lg-12 row" id="parent">
+        <div class="col-sm-6">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12793.828606846995!2d10.2477477!3d36.7115806!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x2de12bfd18d090e1!2sSOGEMPAL!5e0!3m2!1sfr!2stn!4v1566923627238!5m2!1sfr!2stn"
+            width="100%"
+            height="350"
+            frameborder="0"
+            style="border:0;"
+            allowfullscreen=""
+          ></iframe>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+          <form
+            class="contact-form"
+            [formGroup]="contactForm"
+            (ngSubmit)="onSaveContact()"
+          >
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                placeholder="Veuillez saisir votre nom complet"
+                required="required"
+                autofocus
+                formControlName="name"
+                [class.is-invalid]="
+                  !contactForm.get('name').valid &&
+                  contactForm.get('name').touched
+                "
+                [class.is-valid]="
+                  contactForm.get('name').valid &&
+                  contactForm.get('name').touched
+                "
+              />
+              <div class="invalid-feedback">
+                Veuillez saisir un nom valide!
+              </div>
+            </div>
+
+            <div class="form-group form_left">
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="em"
+                placeholder="Veuillez saisir votre email"
+                required="required"
+                formControlName="email"
+                [class.is-invalid]="
+                  !contactForm.get('email').valid &&
+                  contactForm.get('email').touched
+                "
+                [class.is-valid]="
+                  contactForm.get('email').valid &&
+                  contactForm.get('email').touched
+                "
+              />
+              <div class="invalid-feedback">
+                Veuillez saisir un email valide!
+              </div>
+            </div>
+
+            <div class="form-group form_left">
+              <input
+                type="text"
+                class="form-control"
+                id="sujet"
+                name="sujet"
+                placeholder="Veuillez saisir le sujet"
+                required="required"
+                formControlName="sujet"
+                [class.is-invalid]="
+                  !contactForm.get('sujet').valid &&
+                  contactForm.get('sujet').touched
+                "
+                [class.is-valid]="
+                  contactForm.get('sujet').valid &&
+                  contactForm.get('sujet').touched
+                "
+              />
+              <div class="invalid-feedback">
+                Veuillez saisir un sujet valide!
+              </div>
+            </div>
+            <div class="form-group">
+              <textarea
+                class="form-control textarea-contact"
+                rows="5"
+                id="contenu"
+                name="contenu"
+                placeholder="Veuillez saisir votre message"
+                required="required"
+                formControlName="contenu"
+                [class.is-invalid]="
+                  !contactForm.get('contenu').valid &&
+                  contactForm.get('contenu').touched
+                "
+                [class.is-valid]="
+                  contactForm.get('contenu').valid &&
+                  contactForm.get('contenu').touched
+                "
+              ></textarea>
+              <div class="invalid-feedback">
+                Veuillez saisir 20 caractères minimum!
+              </div>
+              <br />
+              <button
+                type="submit"
+                class="btn my-btn"
+                [disabled]="contactForm.invalid"
+              >
+                <i class="fas fa-paper-plane"> </i> Envoyer
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <br />
+    <br />
+    <div class="container second-portion">
+      <div class="row">
+        <!-- Boxes de Acoes -->
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="icon">
+              <div class="image">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+              </div>
+              <div class="info">
+                <h3 class="title" style="margin-top: 20px;">ADRESSE EMAIL</h3>
+                <p style="font-size: 16px;">
+                  <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;
+                  info@sogempal.tn
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="icon">
+              <div class="image">
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+              </div>
+              <div class="info">
+                <h3 class="title" style="margin-top: 20px;">TELEPHONE</h3>
+                <p style="font-size: 16px;">
+                  <i class="fa fa-mobile" aria-hidden="true"></i> &nbsp; (+216)
+                  71 216 475
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 col-lg-4">
+          <div class="box">
+            <div class="icon">
+              <div class="image">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+              </div>
+              <div class="info">
+                <h3 class="title" style="margin-top: 20px;">ADDRESSE</h3>
+                <p>
+                  <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp; KM
+                  1 Route Boujardga Nassen, 2074 , Ben Arous
+                </p>
+              </div>
+            </div>
+            <div class="space"></div>
+          </div>
+        </div>
+        <!-- /Boxes de Acoes -->
+
+        <!--My Portfolio  dont Copy this -->
+      </div>
+    </div>
+  </div>
 </div>
 <app-footer></app-footer>

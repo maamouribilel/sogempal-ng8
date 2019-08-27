@@ -20,6 +20,7 @@
   background: rgb(173, 120, 63);
   color: #fff;
 }
+
 input[type='text']:focus:not([readonly]) + label {
   color: #c08e58;
 }

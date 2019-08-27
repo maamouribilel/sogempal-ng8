@@ -86,4 +86,10 @@ export class DataService {
       .snapshotChanges();
   }
   */
+
+  /************************* Client contact */
+  saveContact(contact) {
+    this.firestore.collection('contacts').add(contact);
+    this.toastr.success('Votre message a été envoyé avec succès!');
+  }
 }
