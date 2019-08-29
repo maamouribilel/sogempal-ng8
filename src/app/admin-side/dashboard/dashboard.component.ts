@@ -2,7 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { Router } from '@angular/router';
 import { DashDataService } from '../shared/services/dash-data.service';
-import { Subscription, Observable } from 'rxjs';
+import { Subscription } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,13 +21,45 @@ export class DashboardComponent implements OnInit, OnDestroy {
   usersSubscription: Subscription;
   benefits = 0;
   finishedOrders = 0;
-  constructor(private dashDataService: DashDataService, public router: Router) {
+
+  /* charts js area Begin */
+  public barChartOptions = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public chartColors: any[] = [
+    {
+      backgroundColor: '#A77847',
+      borderColor: '#A77847',
+      pointBackgroundColor: '#A77847',
+      pointBorderColor: '#fff',
+      pointHoverBackgroundColor: '#fff',
+      pointHoverBorderColor: '#A77847'
+    }
+  ];
+  public tenDays = [];
+  public tenDaysSells = [];
+  public barChartType = 'bar';
+  public barChartLegend = true;
+
+  public barChartData = [
+    { data: this.tenDaysSells, label: 'Nombre de ventes / jour' }
+  ];
+
+  /* charts js area END */
+
+  constructor(
+    private dashDataService: DashDataService,
+    public router: Router,
+    private firestore: AngularFirestore
+  ) {
     this.getProducts();
     this.getOrders();
     this.getContacts();
     this.getUsers();
     this.calculBenefits();
     this.completedOrders();
+    this.calculateDays();
   }
 
   ngOnInit() {}
@@ -82,4 +115,52 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.contactsSubscription.unsubscribe();
     this.usersSubscription.unsubscribe();
   }
+
+  /* charts js area Begin */
+
+  calculateDays() {
+    const allMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    const today = new Date();
+    let day = today.getDate();
+    let month = today.getMonth() + 1;
+    const year = today.getFullYear();
+
+    for (let i = 0; i < 10; i++) {
+      if (day > 1) {
+        this.tenDays.push(day + '-' + month + '-' + year);
+        this.firestore
+          .collection<any[]>('orders', ref =>
+            ref.where('date', '==', day + '-' + month + '-' + year)
+          )
+          .valueChanges()
+          .subscribe(data => {
+            if (data != null) {
+              this.tenDaysSells[i] = data.length;
+            } else {
+              this.tenDaysSells[i] = 0;
+            }
+          });
+        day--;
+      } else if (day === 1 && month !== 1) {
+        this.tenDays.push(day + '-' + month + '-' + year);
+        this.firestore
+          .collection<any[]>('orders', ref =>
+            ref.where('date', '==', day + '-' + month + '-' + year)
+          )
+          .valueChanges()
+          .subscribe(data => {
+            if (data != null) {
+              this.tenDaysSells[i] = data.length;
+            } else {
+              this.tenDaysSells[i] = 0;
+            }
+          });
+        month--;
+        day = allMonths[month - 1];
+      }
+    }
+    console.log(this.tenDays);
+  }
+
+  /* charts js area END */
 }

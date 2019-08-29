@@ -14,6 +14,9 @@ import { DataTablesModule } from 'angular-datatables';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { DashHeaderComponent } from 'src/app/admin-side/dash-header/dash-header.component';
 
+// chart js
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     SignInComponent,
@@ -31,6 +34,7 @@ import { DashHeaderComponent } from 'src/app/admin-side/dash-header/dash-header.
     FormsModule,
     ReactiveFormsModule,
     DataTablesModule,
+    ChartsModule,
     AngularEditorModule
   ]
 })

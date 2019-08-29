@@ -29,7 +29,8 @@
               "./node_modules/datatables.net/js/jquery.dataTables.min.js",
               "./node_modules/datatables.net-bs4/js/dataTables.bootstrap4.min.js",
               "./node_modules/jspdf/dist/jspdf.min.js",
-              "./node_modules/dom-to-image/dist/dom-to-image.min.js"
+              "./node_modules/dom-to-image/dist/dom-to-image.min.js",
+              "./node_modules/chart.js/dist/Chart.min.js"
             ],
 
             "es5BrowserSupport": true
