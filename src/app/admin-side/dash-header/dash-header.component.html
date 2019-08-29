@@ -33,7 +33,9 @@
             data-toggle="modal"
             [attr.data-target]="'#msgModal' + i"
             (click)="onUpdateState(msgg)"
-            [style.background]="msgg.msgState === 'read' ? '#e0e0e0' : '#fff'"
+            [style.background]="
+              msgg['msgState'] === 'read' ? '#e0e0e0' : '#fff'
+            "
           >
             <div class="dropdown-list-image mr-3 ">
               <img
@@ -46,10 +48,10 @@
             </div>
             <div class="font-weight-bold">
               <div class="text-truncate">
-                {{ msgg.msgContent }}
+                {{ msgg['msgContent'] }}
               </div>
               <div class="small text-gray-500">
-                {{ msgg.name }} · {{ msgg.sentDate }}
+                {{ msgg['name'] }} · {{ msgg['sentDate'] }}
               </div>
             </div>
           </a>
@@ -162,6 +164,49 @@
       <div class="modal-footer">
         <button class="btn my-btn">
           <i class="fas fa-reply"> </i> Répondre
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Logout Modal-->
+<div
+  class="modal fade"
+  id="logoutModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Prêt à partir?</h5>
+        <button
+          class="close"
+          type="button"
+          data-dismiss="modal"
+          aria-label="Close"
+          #closeLogBtn
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à
+        votre session en cours.
+      </div>
+      <div class="modal-footer">
+        <button class="btn my-btn-sec" type="button" data-dismiss="modal">
+          Annuler
+        </button>
+        <button
+          class="btn my-btn"
+          (click)="authService.SignOut()"
+          (click)="closeLogBtn.click()"
+        >
+          Déconnexion
         </button>
       </div>
     </div>

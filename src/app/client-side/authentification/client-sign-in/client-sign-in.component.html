@@ -82,7 +82,12 @@
               Veuillez saisir un mot de passe valide!
             </div>
           </div>
-
+          <div class="forgotPassword">
+            <a [routerLink]="['/reset-pass']"
+              ><span routerLink="/reset-pass">Mot de passe oublié?</span></a
+            >
+          </div>
+          <br />
           <div>
             <button
               type="submit"
@@ -91,7 +96,9 @@
             >
               Se connecter
             </button>
-            <br /><br />
+            <br />
+
+            <br />
           </div>
         </fieldset>
       </form>

@@ -1,8 +1,49 @@
 <app-header></app-header>
 <br />
 <div class="container" style="margin-top:160px;">
-  <p>
-    about-us works!
+  <p id="breadcrumb">
+    <a [routerLink]="['/accueil']"><i class="fas fa-home"></i> Accueil</a>
+    A-propos
   </p>
+  <br />
+  <h2>SOGEMPAML S.A.R.L</h2>
+
+  <hr />
+  <h5>
+    La société <strong>SOGEMPAL</strong> installé en Tunisie possède un centre
+    de production de palettes situé à KM 1 Route Boujardga Nassen. Environ à 20
+    Km prêt de Tunis.
+  </h5>
+  <br />
+  <div class="row">
+    <div
+      class="col-xs-12 col-md-6 col-lg-6"
+      style="font-size: 19px; line-height: 2em;"
+    >
+      <p>
+        Avec une capacité de production de 10000 palettes et 5000 caisses par
+        mois, on est sure de pouvoir satisfaire vos besoins avec la qualité et
+        les dimensions que vous voulez.
+      </p>
+      <p>
+        La qualité de nos palettes s’appuie sur la bonne qualité du bois utilisé
+        et surtout sur l’expérience de notre main d'oeuvre de plus de 30 ans
+        dans le domaine.​
+      </p>
+      <p>
+        N’hésitez pas à nous contacter. On vous envoie avec plaisir des
+        échantillons pour vérifier la qualité de nos caisses et palettes.
+      </p>
+    </div>
+    <div class="col-xs-12 col-md-6 col-lg-6">
+      <img
+        src="../../../assets/img/a-propos.jpg"
+        class="img-fluid "
+        alt="a propos"
+      />
+    </div>
+  </div>
 </div>
+<br />
+<br />
 <app-footer></app-footer>

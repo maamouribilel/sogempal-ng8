@@ -213,44 +213,6 @@
 </div>
 <!-- End of Page Wrapper -->
 
-<!-- Logout Modal-->
-<div
-  class="modal fade"
-  id="logoutModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Prêt à partir?</h5>
-        <button
-          class="close"
-          type="button"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        Sélectionnez "Déconnexion" ci-dessous si vous êtes prêt à mettre fin à
-        votre session en cours.
-      </div>
-      <div class="modal-footer">
-        <button class="btn my-btn-sec" type="button" data-dismiss="modal">
-          Annuler
-        </button>
-        <button class="btn my-btn" (click)="authService.SignOut()">
-          Déconnexion
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
 <!--Add or update Product-->
 <div
   class="modal fade"
@@ -432,40 +394,3 @@
 </div>
 
 <!-- Images modal-->
-
-<!-- Logout Modal-->
-<div
-  *ngFor="let prod of products; let i = index"
-  class="modal fade"
-  [id]="'imgModal' + i"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="exampleModalLabel"
-  aria-hidden="true"
-  style="overflow-y: scroll;"
->
-  <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3>{{ prod.name }}</h3>
-        <button
-          class="close"
-          type="button"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <img
-          src="https://firebasestorage.googleapis.com/v0/b/sogempal-33bb7.appspot.com/o/img%2F{{
-            prod.image.name
-          }}?alt=media&token=8d725787-23d4-4b94-9f27-b21881e131c0"
-          alt="{{ prod.name }}"
-          class="img-fluid"
-        />
-      </div>
-    </div>
-  </div>
-</div>

@@ -14,6 +14,8 @@ import { Order2Component } from '../client-side/order2/order2.component';
 import { Order3Component } from '../client-side/order3/order3.component';
 import { MyAccountComponent } from '../client-side/my-account/my-account.component';
 import { MyOrdersComponent } from '../client-side/my-orders/my-orders.component';
+import { AboutUsComponent } from '../client-side/about-us/about-us.component';
+import { ForgotPasswordComponent } from '../admin-side/forgot-password/forgot-password.component';
 
 // admin
 /*
@@ -32,8 +34,10 @@ const routes: Routes = [
   { path: 'accueil', component: HomeComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'login', component: ClientSignInComponent },
+  { path: 'reset-pass', component: ForgotPasswordComponent },
   { path: 'palettes', component: PalettesComponent },
   { path: 'caisses', component: CaissesComponent },
+  { path: 'a-propos', component: AboutUsComponent },
   { path: 'panier', component: PanierComponent },
   { path: 'mon-compte', component: MyAccountComponent },
   { path: 'mes-commandes', component: MyOrdersComponent },

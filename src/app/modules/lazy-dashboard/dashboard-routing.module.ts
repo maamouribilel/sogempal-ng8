@@ -22,6 +22,11 @@ const dashboardRoutes: Routes = [
     component: SignInComponent
     // canActivate: [SecureInnerPagesGuard]
   },
+  {
+    path: 'reset-pass',
+    component: ForgotPasswordComponent
+    // canActivate: [AuthGuard]
+  },
 
   {
     path: 'dashboard',
@@ -48,6 +53,7 @@ const dashboardRoutes: Routes = [
     component: ContactsComponent
     // canActivate: [AuthGuard]
   },
+
   {
     path: 'forgot-password',
     component: ForgotPasswordComponent
