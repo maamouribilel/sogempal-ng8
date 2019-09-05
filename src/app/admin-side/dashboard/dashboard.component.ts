@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ];
   public tenDays = [];
   public tenDaysSells = [];
-  public barChartType = 'bar';
+  public barChartType = 'line';
   public barChartLegend = true;
 
   public barChartData = [

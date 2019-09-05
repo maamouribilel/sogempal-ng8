@@ -1,4 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  DoCheck,
+  ChangeDetectorRef
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../shared/services/auth.service';
 import { BackDataService } from '../shared/services/back-data.service';
@@ -31,6 +37,8 @@ export class DashHeaderComponent implements OnInit, OnDestroy {
       .getUnreadMsgs()
       .subscribe(result => {
         this.unreadMsgs = result.length;
+        //  this.cdr.detectChanges();
+        //  this.checkChange();
       });
     // msgs
     this.msgsSubscription = this.backDataService
@@ -45,7 +53,9 @@ export class DashHeaderComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.checkChange();
+  }
   onUpdateState(msgg) {
     const newContact: any = {
       msgState: 'read'
@@ -55,5 +65,25 @@ export class DashHeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.msgsSubscription.unsubscribe();
     this.unreadMsgsSubscription.unsubscribe();
+  }
+
+  checkChange() {
+    /*
+    const allMsgs = this.msgs.length;
+    setInterval(allMsgs => {
+      if (allMsgs !== this.msgs.length) {
+        // this.playAudio();
+        console.log('changed');
+
+        return false;
+      }
+    }, 2000);
+    */
+  }
+  playAudio() {
+    const audio = new Audio();
+    audio.src = '../../../assets/audio/notif.mp3';
+    audio.load();
+    audio.play();
   }
 }
