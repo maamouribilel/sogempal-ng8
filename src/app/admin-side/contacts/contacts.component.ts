@@ -66,8 +66,6 @@ export class ContactsComponent implements OnInit, OnDestroy {
       dtInstance.destroy();
       this.dtTrigger.next();
     });
-
-    // this.router.navigate(['admin/contacts']);
   }
   ngOnDestroy() {
     this.contactsSubscription.unsubscribe();

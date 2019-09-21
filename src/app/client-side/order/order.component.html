@@ -1,6 +1,6 @@
 <app-header></app-header>
 <br />
-<div class="container" style="margin-top:160px;">
+<div class="container" style="margin-top:10px;">
   <div>
     <div class="mt-5 mb-5 text-center">
       <h2>ETAPE : 1</h2>
@@ -13,7 +13,7 @@
         <a class="">Paiement</a>
       </li>
       <li class="step-item ">
-        <a class="disabled">Devis</a>
+        <a class="disabled">Reçu de paiement</a>
       </li>
     </ul>
   </div>
@@ -39,8 +39,12 @@
         required
         #adresse="ngModel"
         [(ngModel)]="adress.adresse"
+        pattern="[a-zA-Z 0-9]{15,}"
       />
-      <span *ngIf="adresse.invalid && adresse.touched" class="help-block"
+      <span
+        *ngIf="adresse.invalid && adresse.touched"
+        class="help-block"
+        style="color: rgb(255, 80, 80)"
         >Merci d'entrer une adresse valide.</span
       >
     </div>
@@ -54,8 +58,12 @@
         required
         #ville="ngModel"
         [(ngModel)]="adress.ville"
+        pattern="[A-Za-z]{5,}"
       />
-      <span *ngIf="ville.invalid && ville.touched" class="help-block"
+      <span
+        *ngIf="ville.invalid && ville.touched"
+        class="help-block"
+        style="color: rgb(255, 80, 80)"
         >Merci d'entrer un nom de ville valide.</span
       >
     </div>
@@ -69,8 +77,12 @@
         required
         #postal="ngModel"
         [(ngModel)]="adress.postal"
+        pattern="[0-9]{4}"
       />
-      <span *ngIf="postal.invalid && postal.touched" class="help-block"
+      <span
+        *ngIf="postal.invalid && postal.touched"
+        class="help-block"
+        style="color: rgb(255, 80, 80)"
         >Merci d'entrer un code postal valide.</span
       >
       <br /><br />

@@ -16,10 +16,10 @@ export class Order2Component implements OnInit {
   totalPrice = 0;
   adress: any;
   paymentInfo = {
-    numCarte: 0,
-    moisCarte: 0,
-    anneeCarte: 0,
-    cvvCarte: 0
+    numCarte: null,
+    moisCarte: null,
+    anneeCarte: null,
+    cvvCarte: null
   };
   paymentState = 0;
   nomComplet: '';

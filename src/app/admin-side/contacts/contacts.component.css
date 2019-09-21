@@ -1,1 +1,5 @@
 @import url('../../../assets/css/sb-admin-2.css');
+.msg-read {
+  background-color: rgb(141, 141, 141);
+  color: white;
+}

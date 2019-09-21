@@ -12,13 +12,14 @@
       <form (ngSubmit)="onSignIn(signInForm)" #signInForm="ngForm">
         <div class="form-group">
           <input
-            type="text"
+            type="email"
             class="form-control"
             placeholder="Enter votre email"
             name="email"
             required
             #email="ngModel"
             ngModel
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
           />
           <span *ngIf="email.invalid && email.touched" class="help-block"
             >Merci d'entrer un email valide.</span
@@ -26,13 +27,14 @@
         </div>
         <div class="form-group">
           <input
-            type="text"
+            type="password"
             class="form-control"
             placeholder="Enter votre mot de passe"
             name="password"
             required
             #password="ngModel"
             ngModel
+            pattern=".{6,30}"
           />
           <span *ngIf="password.invalid && password.touched" class="help-block"
             >Merci d'entrer un mot de passe valide.</span

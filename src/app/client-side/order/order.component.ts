@@ -12,9 +12,9 @@ export class OrderComponent implements OnInit {
   orderList: any[] = [];
   totalPrice = 0;
   adress = {
-    adresse: '',
-    ville: '',
-    postal: 0
+    adresse: null,
+    ville: null,
+    postal: null
   };
 
   constructor(

@@ -226,7 +226,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
   // delete product
   onDeleteProd(prodId: string) {
-    if (confirm('Are you sure?')) {
+    if (confirm('Est-ce que vous êtes sûre?')) {
       this.backDataService.deleteProduct(prodId);
       // reset datatable
       this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {

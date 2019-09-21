@@ -1,19 +1,19 @@
 <app-header></app-header>
 <br />
-<div class="container" style="margin-top:160px;">
+<div class="container" style="margin-top:10px;">
   <div>
     <div class="mt-5 mb-5 text-center">
       <h2>ETAPE : 2</h2>
     </div>
     <ul class="step d-flex flex-nowrap">
       <li class="step-item ">
-        <a href="#!" class="">Adresse</a>
+        <a class="">Adresse</a>
       </li>
       <li class="step-item active">
-        <a href="#!" class="">Paiement</a>
+        <a class="">Paiement</a>
       </li>
       <li class="step-item ">
-        <a href="#!" class="">Devis</a>
+        <a class="Reçu de paiement">Reçu de paiement</a>
       </li>
     </ul>
   </div>
@@ -41,12 +41,16 @@
           required
           #numCarte="ngModel"
           autofocus
+          pattern="[0-9]{13,16}"
         />
         <span class="input-group-addon"
           ><span class="glyphicon glyphicon-lock"></span
         ></span>
       </div>
-      <span *ngIf="numCarte.invalid && numCarte.touched" class="help-block"
+      <span
+        *ngIf="numCarte.invalid && numCarte.touched"
+        class="help-block"
+        style="color: rgb(255, 80, 80)"
         >Merci d'entrer un numero de carte valide.</span
       >
     </div>
@@ -64,10 +68,12 @@
               name="moisCarte"
               #moisCarte="ngModel"
               required
+              pattern="[0-9]{2}"
             />
             <span
               *ngIf="moisCarte.invalid && moisCarte.touched"
               class="help-block"
+              style="color: rgb(255, 80, 80)"
               >Merci d'entrer un numero de mois valide.</span
             >
           </div>
@@ -81,10 +87,13 @@
               name="anneeCarte"
               #anneeCarte="ngModel"
               required
+              pattern="[0-9]{2}"
+              min="19"
             />
             <span
               *ngIf="anneeCarte.invalid && anneeCarte.touched"
               class="help-block"
+              style="color: rgb(255, 80, 80)"
               >Merci d'entrer une année valide.</span
             >
           </div>
@@ -102,8 +111,12 @@
             name="cvvCarte"
             #cvvCarte="ngModel"
             required
+            pattern="[0-9]{3,4}"
           />
-          <span *ngIf="cvvCarte.invalid && cvvCarte.touched" class="help-block"
+          <span
+            *ngIf="cvvCarte.invalid && cvvCarte.touched"
+            class="help-block"
+            style="color: rgb(255, 80, 80)"
             >Merci d'entrer un code CVV valide.</span
           >
         </div>
@@ -132,7 +145,7 @@
         class="col next-btn btn float-right"
         [disabled]="!f2.valid"
       >
-        Continuer
+        Confirmer
       </button>
     </div>
   </form>

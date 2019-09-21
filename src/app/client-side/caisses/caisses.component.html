@@ -1,6 +1,6 @@
 <app-header></app-header>
 <br />
-<div class="container" style="margin-top:160px;">
+<div class="container" style="margin-top:10px;">
   <p id="breadcrumb">
     <a [routerLink]="['/accueil']"><i class="fas fa-home"></i> Accueil</a>
     Caisses en bois
@@ -21,25 +21,45 @@
           />
           <div class="card-block">
             <div class="row meta card-text">
-              <div class="col-3 ">
+              <div
+                class="col-3 "
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="La capacité de stockage"
+              >
                 <div class="d-flex justify-content-center llh-box">
                   <i class="fas fa-weight-hanging llh-icons"></i>
                 </div>
                 <p class="llh-text">{{ prod.weight }}Kg</p>
               </div>
-              <div class="col-3 ">
+              <div
+                class="col-3 "
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="La langueur"
+              >
                 <div class="d-flex justify-content-center llh-box">
                   <i class="fas fa-arrows-alt-h llh-icons"></i>
                 </div>
                 <p class="llh-text">{{ prod.length }}mm</p>
               </div>
-              <div class="col-3 ">
+              <div
+                class="col-3 "
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="La hauteur"
+              >
                 <div class="d-flex justify-content-center llh-box">
                   <i class="fas fa-ruler-vertical llh-icons"></i>
                 </div>
                 <p class="llh-text">{{ prod.height }}mm</p>
               </div>
-              <div class="col-3 ">
+              <div
+                class="col-3 "
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="La largeur"
+              >
                 <div class="d-flex justify-content-center llh-box">
                   <i class="fas fa-ruler-horizontal llh-icons"></i>
                 </div>

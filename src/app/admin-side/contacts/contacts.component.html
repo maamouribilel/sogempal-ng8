@@ -104,7 +104,7 @@
 
         <!-- Content Row -->
         <div class="row">
-          <div class="card-body">
+          <div class="card-body table-responsive">
             <div class="table-responsive">
               <table
                 class="table table-hover table-borderless"
@@ -120,18 +120,17 @@
                     <th>Nom complet</th>
                     <th>Email</th>
                     <th>Sujet</th>
-                    <th>Date</th>
+                    <th style="width:200px;">Date</th>
                   </tr>
                 </thead>
 
                 <tbody class="table-striped">
                   <tr
                     *ngFor="let contact of contacts; let i = index"
-                    [class]="contact.msgState === 'read' ? 'table-dark' : ''"
+                    [class]="contact.msgState === 'read' ? 'msg-read' : ''"
                     style="cursor: pointer;"
                     data-toggle="modal"
-                    [attr.data-target]="'#contactModal' + i"
-                    (click)="onUpdateState(contact)"
+                    [attr.data-target]="'#contactModall' + i"
                   >
                     <td>
                       {{ contact.name | uppercase }}
@@ -178,8 +177,8 @@
 <!-- Contacts Modal-->
 <div
   *ngFor="let contact of contacts; let i = index"
-  class="modal fade"
-  [id]="'contactModal' + i"
+  class="modal "
+  [id]="'contactModall' + i"
   tabindex="-1"
   role="dialog"
   aria-labelledby="orderModal"
@@ -189,14 +188,13 @@
   <div class="modal-dialog modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Prêt à partir?</h5>
         <button
           class="close"
           type="button"
           data-dismiss="modal"
           aria-label="Close"
         >
-          <span aria-hidden="true">×</span>
+          <span aria-hidden="true" (click)="onUpdateState(contact)">×</span>
         </button>
       </div>
       <div class="modal-body">
@@ -229,9 +227,6 @@
           [placeholder]="'Enter text here...'"
           [(ngModel)]="htmlMsgContent"
         ></angular-editor>
-        <div class="html">
-          {{ htmlMsgContent }}
-        </div>
       </div>
       <div class="modal-footer">
         <button class="btn my-btn">
